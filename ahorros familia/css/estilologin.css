@@ -1,0 +1,36 @@
+body { 
+    background: url(../images/56b3d10d8e5c8.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.header{
+    height: 200px;
+    padding-left: 180px;
+    padding-top: 190px;
+
+}
+.title{
+ font-family: Brush Script MT;
+ font-size: 60px;
+ color:rgb(60, 14, 85) ;
+
+}
+.container{
+padding-top: 50px;
+
+}    
+
+
+.form-group{
+    padding-left: 55px;
+    justify-content: center;
+    width: 450px;
+   
+}
+ .btn-primary{
+
+   width: 395px;
+
+}
