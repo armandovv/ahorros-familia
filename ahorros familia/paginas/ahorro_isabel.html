@@ -72,6 +72,25 @@
 					return true;
 				}
             }
+			
+				function validatmonth(){
+				 month = document.getElementById('month').value;
+				 if(document.getElementById('month').value=="---------seleccione mes--------"){
+					document.getElementById('dd').value="DEBE ESCOGER UN MES!!";
+					return false;
+				 }
+			   else{
+				return true;
+			   }
+		
+		
+				}
+		
+		
+		
+		
+		
+				
 
 		</script>
 </head>
@@ -80,7 +99,7 @@
         <h2 class="titulo">AHORROS ISABEL</h2> <a href="./general.html"><button class="btn btn-primary">IR A INICIO</button></a>
         <!-- Navbar content -->
     </nav> 
-	<center><table class="shape" border="1"><h2 class="enum">CONSIGNACIONES</h2>
+	<center><table class="shape" border="1"><h2 class="enum"><img src="../images/descarga.png" width="55" height="55" border="2" style="border-radius:50%">CONSIGNACIONES</h2>
 		<form action="../php/ingresar_ahorro.php" onsubmit=" return toggleButton()" method="post">
 		<tr><td>fecha</td><td><input type="date" id="date" name="fecha"/></td>
      </tr>
@@ -94,7 +113,7 @@
 
 	</tr></form>
 </table></center>
-<center><table class="shape" border="1"><h2 class="enum">RETIROS CAPITAL</h2>
+<center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
 	<form action="../php/retirar_ahorro.php" onsubmit=" return validateform()" method="post">
 	<tr><td>fecha</td><td><input type="date" id="dates" name="fecha" /></td>
  </tr>
@@ -115,9 +134,9 @@
 	 </td></tr>
       </form>
 	  <tr><td>
-	  <form action="../php/mostrar_ahorroxfecha.php" method="post">
+	  <form action="../php/mostrar_ahorroxfecha.php" method="post"  onsubmit="return validatmonth()">
 		
-		<select name="fecha" class="fecha" style="color:#0ba842 ;"  width="30">
+		<select name="fecha" class="fecha" id="month" style="color:#0ba842 ;"  width="30">
 			<option selected="selected">---------seleccione mes--------</option>
 			<option value="1">Enero</option>
 			<option value="2">Febrero</option>
@@ -135,6 +154,7 @@
 		<tr><td>
 			<input type="submit"  class="btn btn-primary" value="mostrar movimientos por mes"/>
 	 </td></tr>
+	 <tr><td><input type="text" id="dd" class="noborder" disabled></td></tr>
       </form></table>
 	 
 
