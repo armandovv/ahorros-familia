@@ -1,0 +1,44 @@
+body { 
+    background: url(../images/490x_ahorrar-istock.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+ 
+  .enum{
+  padding-left: 60px;
+  color: rgb(32, 2, 2);
+  font-family:sans-serif;  
+  }
+
+.titulo {
+	text-align: center;
+    color:white;
+}
+#cont-boton{
+    padding-top:40px;
+    padding-left:10%;
+}
+form{
+
+    padding: 10px;
+}
+.fecha{
+
+ align-items: center;
+}
+.shape{
+    background: rgba(141, 139, 139, 0.4);
+}
+.formed{
+    padding-left: 40px;
+    text-align:center;
+}
+.noborder{
+    background-color: transparent;
+    color: #e41111;
+    width: 250px;
+    font: size 15px;
+    border:0;
+    }

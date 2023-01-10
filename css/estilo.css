@@ -1,0 +1,24 @@
+body { 
+    background: url(../images/ahorro2-e1547087574282.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    
+  }
+  .titulo {
+	text-align: center;
+    color:white;
+}
+.info{
+    width: 1000px;
+    height: 60px;
+  text-align: center;
+  font-size: 30px;
+  color:rgb(239, 176, 17);
+
+}
+#cont-boton{
+    padding-top:40px;
+    padding-left:45%;
+}

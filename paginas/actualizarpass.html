@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONFIGURACION DE SEGURIDAD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+      #viewPassword{
+        cursor:pointer;
+      }
+
+    </style>
+<script language="Javascript"  type="text/javascript">
+  function validar(){
+  var pasActual=document.getElementById("contraseña").value;
+  var pasNew1=document.getElementById("nueva").value;
+  var pasNew2=document.getElementById("confirm").value;
+if(pasActual.length=="0"){
+  alert("INGRESE SU CLAVE ACTUAL");
+  document.getElementById("contraseña").focus();
+  return false;
+}
+if(pasNew1!= pasNew2){
+alert("CAMPO CONTRASEÑA NUEVA Y CAMPO CONFIRMACION NO COINCIDEN");
+document.getElementById("nueva").focus();
+return false;
+} else{
+  
+  return true;
+}
+
+}
+
+
+</script>
+
+</head>
+<body>
+  <center> <table border="3"><form action="../php/actualizar_pass.php" onsubmit="return validar()" method="post">
+<tr><td>INGRESE CONTRASEÑA ACTUAL </td><td><input type="password" id="contraseña" name="contraseña"></td>
+
+</tr>
+
+
+<tr><td>INGRESE CONTRASEÑA NUEVA</td><td><input type="password" id="nueva" name="nueva" required="required" pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros"></td>
+
+
+</tr>
+<tr><td>CONFIRME SU NUEVA CONTRASEÑA</td><td><input type="password" id="confirm" name="confirm" required ></td>
+
+
+</tr>
+
+<tr><td><input type="submit" value="CAMBIAR"></td></tr>
+
+
+
+
+
+</form>
+   </table> </center>
+   <center><h5>Su clave debe tener 6 o mas digitos los cuales pueden contener letras y numeros</h5></center>
+   <a href="./general.html"><button class="btn btn-primary">volver</button></a>
+</body>
+</html>
