@@ -1,5 +1,5 @@
 <div id='cualquier'>
-<CENTER><H1>MOVIMIENTOS REGISTRADOS</H1></center>
+<CENTER><H4>MOVIMIENTOS POR CONCEPTO</H4></center>
 <center><table border=1>
 <th width=200 bgcolor="blue">ID MOVIMIENTO</th>
 <th width=200 bgcolor="blue">FECHA</th>
@@ -22,9 +22,9 @@ exit;
 else
 {
 //echo "la coneccion fue exitosa";
-
+$usuario = $_POST['usuario'];
 $concepto = $_POST['concepto'];
-$sql = "select *from ahorros_isabel where concepto='".$concepto."'";
+$sql = "select *from ahorros where usuario= '".$usuario."' and concepto='".$concepto."'";
 $result=mysqli_query($mysqli, $sql);  
 if($result->num_rows > 0){
 {
@@ -47,7 +47,7 @@ echo "<table border=1>";
  echo "<td width=100>TOTAL RETIRADO</td>";  
 echo "<td width=100>TOTAL AHORRADO</td>"; 
 echo "</table>"; 
-$sql = "SELECT sum(valor_a_retirar), sum(valor_a_ahorrar)-sum(valor_a_retirar) from ahorros_isabel";
+$sql = "SELECT sum(valor_a_retirar), sum(valor_a_ahorrar)-sum(valor_a_retirar) from ahorros where usuario='".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 
 while ($mostrar=mysqli_fetch_array($result))
@@ -59,11 +59,11 @@ echo "<table border=1>";
 	
 }  
 echo "</table>"; }
-else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script> ';
-	echo "<script>location.href='../paginas/ahorro_isabel.html'</script>";
+else { echo' <script>alert("NO SE ENCONTRO EL MOVIMIENTO PARA USUARIO '.$usuario.'")</script> ';
+	echo "<script>location.href='../paginas/movimientos.php'</script>";
 }
    }
-echo"<center><a href='../paginas/ahorro_isabel.html'>VOLVER</a></center>";
+echo"<center><a href='../paginas/movimientos.php'>VOLVER</a></center>";
 
 ?>
 </div>

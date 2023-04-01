@@ -59,6 +59,6 @@ echo "<table border=1>";
 	
 }  
 echo "</table>"; 
-echo"<center><a href='../paginas/ahorro_alejandro.html'>VOLVER</a></center>";
+echo"<center><a href='../paginas/ahorro_alejandro.php'>VOLVER</a></center>";
 php?>
 

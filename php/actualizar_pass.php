@@ -20,7 +20,7 @@ if (!$conn)
 	if ($nr!=1)
 	{ echo '<script>alert("LA CONTRASEÑA ACTUAL INGRESADA NO CORRESPONDE A SU CLAVE ACTUAL")</script> ';
 		
-        echo "<script>location.href='../paginas/actualizarpass.html'</script>";
+        echo "<script>location.href='../paginas/actualizarpass.php'</script>";
 		
 		}
 			
@@ -39,7 +39,7 @@ if (!$conn)
 			
 			echo '<center><h3>SE CAMBIO EXITOSAMENTE LA CONTRASEÑA</h3><center><br> ';
 			echo'<center><img src="../images/7efs.gif" width="350" height="350"></center>';
-			echo"<a href='../paginas/general.html'>VOLVER</a>";
+			echo"<a href='../paginas/general.php'>VOLVER</a>";
 			
 
 		}

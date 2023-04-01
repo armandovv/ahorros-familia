@@ -27,7 +27,7 @@ else
 //echo "la coneccion fue exitosa";
 
 $fecha = $_POST['fecha'];
-$sql = "select *from ahorros_alejandro where year(fecha)>= 2022 and month(fecha)='".$fecha."'";
+$sql = "select *from ahorros_alejandro where year(fecha)>= 2023 and month(fecha)='".$fecha."'";
 $result=mysqli_query($mysqli, $sql);  
 if($result->num_rows > 0){
 {
@@ -62,11 +62,11 @@ echo "<table border=1>";
 }echo "</table>";  } //echo "NO HAY MOVIVMIENTOS";
           
  else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script> ';
-	echo "<script>location.href='../paginas/ahorro_alejandro.html'</script>";
+	echo "<script>location.href='../paginas/ahorro_alejandro.php'</script>";
 }
 }
 
-echo"<center><a href='../paginas/ahorro_alejandro.html'>VOLVER</a></center>";
+echo"<center><a href='../paginas/ahorro_alejandro.php'>VOLVER</a></center>";
 
 ?>
 </div>
@@ -82,41 +82,6 @@ echo"<center><a href='../paginas/ahorro_alejandro.html'>VOLVER</a></center>";
 	ventimp.close();
 	}
 	
-	/*function viewmonth(){
-var mes= $fecha;
-if(mes='1'){
-	document.getElementById('mes').value='ENERO';
-}if(mes='2'){
-	document.getElementById('mes').value='FEBRERO';
-}if(mes='3'){
-	document.getElementById('mes').value='MARZO';
-} if(mes='4'){
-	document.getElementById('mes').value='ABRIL';
-}if(mes='5'){
-	document.getElementById('mes').value='MAYO';
-} if(mes='6'){
-	document.getElementById('mes').value='JUNIO';
-} if(mes='7'){
-	document.getElementById('mes').value='JULIO';
-} if(mes='8'){
-	document.getElementById('mes').value='AGOSTO';
-} if(mes='9'){
-	document.getElementById('mes').value='SEPTIEMBRE';
-} if(mes='10'){
-	document.getElementById('mes').value='OCTUBRE';
-} if(mes='11'){
-	document.getElementById('mes').value='NOVIENBRE';
-} if(mes='12'){
-	document.getElementById('mes').value='DICIEMBRE';
-} else{
-	document.getElementById('mes').value='';
-}
-
-
-
-	}
-return viewmonth();
-
-
-	</script>	</center>*/
+	
+	</script>	</center>
 

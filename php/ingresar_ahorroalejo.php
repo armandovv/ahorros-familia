@@ -19,5 +19,5 @@ $concepto = $_POST['concepto'];
   echo "los datos fueron ingresados correctamemte  </br>";
 }
 $mysqli->close();
-echo"<a href='../paginas/ahorro_alejandro.html'>VOLVER</a>";
+echo"<a href='../paginas/ahorro_alejandro.php'>VOLVER</a>";
 ?>

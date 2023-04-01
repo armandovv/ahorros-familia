@@ -7,16 +7,16 @@ if ($mysqli->connect_errno) {
 	exit;
 }
 else{
-	
+$usuario = $_POST['usuario'];	
 $fecha = $_POST['fecha'];
 $valor_a_ahorrar = $_POST['valor_a_ahorrar'];
 $valor_a_retirar = $_POST['valor_a_retirar'];
 $concepto = $_POST['concepto'];
-$cosulta= mysqli_query($mysqli, "select (sum(valor_a_ahorrar)-sum(valor_a_retirar)) as mtotal from ahorros_isabel");
+$cosulta= mysqli_query($mysqli, "select (sum(valor_a_ahorrar)-sum(valor_a_retirar)) as mtotal from ahorros where usuario='".$usuario."'");
 $row = mysqli_fetch_array($cosulta);
 $total=$row['mtotal'];
-if($total > $valor_a_retirar ){
- $sql = "INSERT INTO ahorros_isabel Values(null,'".$fecha."','".$valor_a_ahorrar."','".$valor_a_retirar."','".$concepto."')";
+if($total >= $valor_a_retirar ){
+ $sql = "INSERT INTO ahorros Values(null, '".$usuario."','".$fecha."','".$valor_a_ahorrar."','".$valor_a_retirar."','".$concepto."')";
  
  
   $mysqli->query($sql);
@@ -24,11 +24,11 @@ if($total > $valor_a_retirar ){
 }else{
   echo '<script>alert("EL VALOR SOLICITADO ES SUPERIOR A SU SALDO ACTUAL $',number_format($total).'" )</script> ';
 		
-  echo "<script>location.href='../paginas/ahorro_isabel.html'</script>";
+  echo "<script>location.href='../paginas/movimientos.php'</script>";
 
 }
 }
 
 $mysqli->close();
-echo"<a href='../paginas/ahorro_isabel.html'>VOLVER</a>";
+echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
 ?>

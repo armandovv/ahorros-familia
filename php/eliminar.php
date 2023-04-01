@@ -10,25 +10,33 @@ if (!$conn)
 		echo"errno: " . $mysqli->connect_errno . "<br>";
 	exit;}
 
-$usuario = $_POST['usuario'];	
-$fecha = $_POST['fecha'];
-$valor_a_ahorrar = $_POST['valor_a_ahorrar'];
-$valor_a_retirar = $_POST['valor_a_retirar'];
-$concepto = $_POST['concepto'];
+$documento = $_POST['documento'];	
+
+
 $query =mysqli_query ($conn,"select distinct documento from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario=  '".$usuario."'");
-	$nr= mysqli_num_rows($query);
+ $nr= mysqli_num_rows($query);
   if ($nr=0)
   { echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO SE ENCUENTRA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
 		
-    echo "<script>location.href='../paginas/movimientos.php'</script>";
+    echo "<script>location.href='./php/consulta_usuarios.php'</script>";
 
 }
-else{
-  $query =mysqli_query($conn, "INSERT INTO ahorros Values(null,'".$usuario."','".$fecha."','".$valor_a_ahorrar."','".$valor_a_retirar."','".$concepto."')");
+  else{
+    $query =mysqli_query($conn, "delete from usuarios where documento='".$documento."' ");
+   
+  
+    echo "los datos fueron ingresados correctamemte  </br>";
+  
+  echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
+  }
+  
+
  
+		
+  echo "<script>location.href='../php/consulta_usuarios.php'</script>";
 
-  echo "los datos fueron ingresados correctamemte  </br>";
 
+
+
+$mysqli->close();
 echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
-}
-?>

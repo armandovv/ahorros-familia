@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<?php>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,32 +8,13 @@
     <title>AHORRO ALEJANDRO</title>
 	<link rel="icon" href="../images/pesos.png">
 	<link rel= "stylesheet"  href="../css/userlog.css">
-    <link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-			crossorigin="anonymous"
-		/>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-			integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
-			integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
-			crossorigin="anonymous"
-		></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 		<script type="text/javascript" language="javascript">
         function validatmonth(){
          month = document.getElementById('month').value;
 		 if(document.getElementById('month').value=="---------seleccione mes--------"){
 			document.getElementById('dd').value="DEBE ESCOGER UN MES!!";
+			document.getElementById('dd').style= "background-color:#F6DDCC; border-color:red;  border-style: solid; border-width: 1px";
 			return false;
 		 }
        else{
@@ -59,10 +41,39 @@
 		</script>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-primary">
-        <h2 class="titulo">AHORROS ALEJANDRO</h2><a href="./general.html"><button class="btn btn-primary">IR A INICIO</button></a>
-        <!-- Navbar content -->
-    </nav> 
+<nav class="navbar navbar-expand-lg  bg-secondary">
+<div class="container-fluid">
+  <a class="navbar-brand" href="./general.php"><img src="../images/pngegg (1).png" width="55" height="55"></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	<ul class="navbar-nav">
+	  
+	  <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		<img src="../images/pngegg (2).png" width="47" height="47">
+		</a>
+		<ul class="dropdown-menu">
+		  <li><a class="dropdown-item" href="./actualizarpass.html">Cambiar contraseña</a></li>
+		 
+		</ul>
+	  </li>
+	  <li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+		<img src="../images/pngegg (4).png" width="47" height="47">
+		</a>
+		<ul class="dropdown-menu">
+		<li><a class="dropdown-item" href="./general.php">Usuario</a></li>
+		  <li><a class="dropdown-item" href="../php/logout.php">Cerrar Sesion</a></li>
+		 
+		</ul>
+	  </li>
+	</ul>
+  </div>
+</div>
+</nav> 
+<h2> AHORROS ALEJANDRO </h2>
 	<center><table class="shape" border="1"><h2 class="enum"><img src="../images/descarga.png" width="55" height="55" border="2" style="border-radius:50%">CONSIGNACIONES</h2>
 		<form action="../php/ingresar_ahorroalejo.php" method="post">
 		<tr><td>fecha</td><td><input type="date" name="fecha" required/></td>
@@ -76,8 +87,8 @@
 	<tr><td><input type="submit"   class="btn btn-primary" value="registrar"/><input type="reset"   class="btn btn-primary"value="limpiar"/></td>
 
 	</tr></form>
-</table></center>
-<center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
+</table></center><center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
+
 	<form name="retirar" action="../php/retirar_ahorroalejo.php" method="post">
 	<tr><td>fecha</td><td><input type="date" name="fecha" id="date" required/></td>
  </tr>
@@ -120,4 +131,8 @@
 	 </td></tr>
 	 <tr><td><input type="text" id="dd" class="noborder" disabled></td></tr>
       </form></table>
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
+	</body>
 	 
+	
+</html>
