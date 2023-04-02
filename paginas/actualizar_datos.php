@@ -1,3 +1,29 @@
+<link rel="icon" href="../images/pesos.png">
+<?php
+ session_start();
+$mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
+
+if ($mysqli->connect_errno) {
+	echo "lo sentimos, este sitio web esta experimentando problemas.";
+	
+	exit;
+}
+else if
+(!empty($_SESSION['nombreusuario']))
+{ 
+ $sql= "select *from login where usuario= '".$_SESSION['nombreusuario']."'";
+
+$mysqli->query($sql);
+}else {
+  echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
+
+  echo "<script>location.href='../index.html'</script>";
+}
+$mysqli->close();
+?>
+<h4><?php echo
+      $_SESSION["nombreusuario"];?></h4>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

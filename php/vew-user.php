@@ -48,8 +48,8 @@ echo "<table border=1>";
  
 echo '<h4>nombre   ',$mostrar['nombre'].' </h4>';
 echo 
-'<h4>telefono  ' ,$mostrar['telefono'].  '  <a href="../paginas/actualizar_datos.html">  <img src="../images/editar.png" width="20" height="20">'.'</a></h4>';
-echo '<h4>email  ' ,$mostrar['usuario'].'  <a href="../paginas/actualizar_datos.html">  <img src="../images/editar.png" width="20" height="20">'.'</h4>';
+'<h4>telefono  ' ,$mostrar['telefono'].  '  <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</a></h4>';
+echo '<h4>email  ' ,$mostrar['usuario'].'  <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</h4>';
 }  
 echo "</table>";
 echo'</center>';
