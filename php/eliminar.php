@@ -25,11 +25,8 @@ $query =mysqli_query ($conn,"select distinct documento from ahorros inner join u
     $query =mysqli_query($conn, "delete from usuarios where documento='".$documento."' ");
    
   
-    echo "los datos fueron ingresados correctamemte  </br>";
-  
-  echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
   }
-  
+  echo'<script>alert("se elimino usuario " '.$documento.'"del sistema ")</script>';
 
  
 		

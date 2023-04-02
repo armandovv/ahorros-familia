@@ -15,9 +15,9 @@ $fecha = $_POST['fecha'];
 $valor_a_ahorrar = $_POST['valor_a_ahorrar'];
 $valor_a_retirar = $_POST['valor_a_retirar'];
 $concepto = $_POST['concepto'];
-$query =mysqli_query ($conn,"select distinct documento from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario=  '".$usuario."'");
+$query =mysqli_query ($conn,"select *from ahorros where usuario= '".$usuario."'");
 	$nr= mysqli_num_rows($query);
-  if ($nr=0)
+  if ($nr==0)
   { echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO SE ENCUENTRA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
 		
     echo "<script>location.href='../paginas/movimientos.php'</script>";
