@@ -45,10 +45,11 @@ echo'<form name="eliminar" method="POST"  action="../php/eliminar.php">';
       //Creamos la sentencia SQL y la ejecutamos
       $sql="select distinct documento from usuarios ";
       $result=mysqli_query($mysqli, $sql); 
-      echo '<select name="documento" id="documento" style="width:200px; height:30px">';
+      echo '<select name="documento" id="documento" style="width:230px; height:30px">';
       //Mostramos los registros en forma de menú desplegable
+      echo'<option selected="selected">----seleccione N. de documento----</option>';
       while ($row = $result->fetch_array()) {
-        echo '<option  style="width:200px; height:30px">'.$row["documento"];
+      echo '<option  style="width:200px; height:30px">'.$row["documento"];
       }
       $result->free_result();
   
@@ -63,15 +64,19 @@ echo'<br>';
 echo"<center><a href='../php/consulta_usuarios.php'>VOLVER</a></center>";
 ?>
 <script type="text/javascript" language="javascript"> 
-   function confirmar(){
+
+function confirmar(){
 			var usr= document.getElementById('documento').value;
-     
-			if (confirm("ELIMINAR USUARIO " +usr+ "?" )){
+         if( document.getElementById('documento').value=="----seleccione N. de documento----"){
+   alert("DEBE ESCOGER UN NUMERO DE DOCUMENTO DE USUARIO");
+   return false;
+}else {if (confirm("ELIMINAR USUARIO " +usr+ "?" )){
 			   document.eliminar.submit()
 			}else{
         document.getElementById('documento').value="";	
 				
 			}
     }
+   }
   
 </script>
