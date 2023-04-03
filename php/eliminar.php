@@ -23,17 +23,15 @@ $query =mysqli_query ($conn,"select distinct documento from ahorros inner join u
 }
   else{
     $query =mysqli_query($conn, "delete from usuarios where documento='".$documento."' ");
-   
-  
-  }
-  echo'<script>alert("se elimino usuario " '.$documento.'"del sistema ")</script>';
+    echo'<script>alert("se elimino usuario " '.$documento.'"del sistema ")</script>';
 
  
 		
   echo "<script>location.href='../php/consulta_usuarios.php'</script>";
 
+  
+  }
+ ?>
 
 
 
-$mysqli->close();
-echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
