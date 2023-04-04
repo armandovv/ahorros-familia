@@ -1,2 +1,2 @@
 # ahorros familia
- 
+ este es un programa que he creado con el fin de que los ahorros que las personas me dan a guardar, el sistema me permita, a manera de un banco, mostrar los movimientos generados como son los ingresos de su capital y los retiros que ellos hacen y al final el sistema me permite ver el saldo disponible de sus respectivos ahorros, del cual, finalmente, genera un documento PDF que luego es enviado a sus correos registrados para que puedan ver el estado de sus ahorros.
