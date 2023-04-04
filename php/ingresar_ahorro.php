@@ -17,8 +17,8 @@ $valor_a_retirar = $_POST['valor_a_retirar'];
 $concepto = $_POST['concepto'];
 $query =mysqli_query ($conn,"select *from ahorros where usuario= '".$usuario."'");
 	$nr= mysqli_num_rows($query);
-  if ($nr==0)
-  { echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO SE ENCUENTRA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
+  if ($nr=0)
+  { echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO ESTA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
 		
     echo "<script>location.href='../paginas/movimientos.php'</script>";
 
