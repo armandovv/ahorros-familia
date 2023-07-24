@@ -19,9 +19,9 @@ $sql= "select distinct nombres, usuario from ahorros inner join usuarios on usua
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
 while ($mostrar=mysqli_fetch_array($result)){
-echo"<center><table>";
-echo'<h3>SISTEMA DE AHORROS FAMILIAR</h3>';
-echo'<h3>certifica</h3>';
+echo"<center><table frame='border'>";
+echo'<tr><td><h3><center>SISTEMA DE AHORROS FAMILIAR</h3></center></td></tr>';
+echo'<tr><td><h3><center>certifica</h3></center></td></tr>';
 echo"<tr><td><h4>",'Por medio de la presente, hacemos constar que el señor(a) ',$mostrar['nombres'].' con documento ',$mostrar['usuario'].':'."</h4></td></tr>" ; }
 
 $sql="select min(fecha)from ahorros where usuario= '".$usuario."'";

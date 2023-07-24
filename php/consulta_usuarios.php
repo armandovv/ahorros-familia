@@ -61,11 +61,11 @@ echo "<table border=1>";
     echo "<td width=300>",$mostrar['nombres']."</td>";  
 	echo "<td width=300>" ,$mostrar['email']."</td>";  
 	echo "<td width=300>",$mostrar['telefono']."</td>"; 
-  echo "<td width=30>".'<a href="../paginas/borrar.php"><img src="../images/eliminar.png" width="20" height="20">'.'</a></td>';
+  echo "<td width=30>".'<a href="../paginas/borrar.php"><img src="../images/eliminar.png" width="20" height="20">'.'</a>'."</td>";
      
 }  
 echo "</table>"; 
-echo "<a href='../paginas/movimientos.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:solid;width:180; height:44; color:white'>CONSULTA DE MOVIMIENTOS</button></a><br>";
+echo "<a href='../paginas/movimientos.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:solid;width:200; height:44; color:white'>CONSULTA DE MOVIMIENTOS</button></a><br>";
 
 
     

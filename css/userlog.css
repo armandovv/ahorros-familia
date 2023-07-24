@@ -14,11 +14,18 @@ body {
 
 .titulo {
 	text-align: center;
-    color:white;
+    color:rgb(30, 17, 17);
 }
 #cont-boton{
     padding-top:40px;
     padding-left:10%;
+}
+.logo{
+    text-align: center;
+    font-size: 3em;
+}
+.logo span {
+    color: #b70e21;
 }
 form{
 
@@ -28,13 +35,13 @@ form{
 
  align-items: center;
 }
-.shape{
-    background: rgba(141, 139, 139, 0.4);
+
+.contact-form form p{
+    margin: 0;
+  
+    max-width: 900px;
 }
-.formed{
-    padding-left: 40px;
-    text-align:center;
-}
+
 .noborder{
     background-color: transparent;
     color: #e41111;
@@ -42,7 +49,25 @@ form{
     font: size 15px;
     border:0;
     }
-    .div_1{
-        width: 250px;
-        padding-left: 250px;
+    .div_2 {
+        
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.5em;
     }
+    .contact-wrapper {
+        background: rgba(  900 , 190 , 5, 0.40);
+    
+        box-shadow: 0 0 20px 0 rgba(216, 55, 55, 0.3);
+        
+    }
+    
+    .contact-wrapper > * {
+        padding: 1em;
+    }
+   .contact-form .btn-primary{
+
+    background-color: #b70e21;
+    
+   }

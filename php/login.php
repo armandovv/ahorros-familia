@@ -46,7 +46,7 @@ if (!$conn)
 -moz-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);
 box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 			
-			echo '<h3>BIENVENIDO '.$nombreusuario.' </h3>';
+			echo '<h3>BIENVENIDO ',strtoupper($nombreusuario),' </h3>';
 			
 			echo'<img src="../images/7efs.gif" width="350" height="280">';
 			

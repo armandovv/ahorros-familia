@@ -89,7 +89,7 @@ echo "</table>";
 
 }
 else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
-	echo "<script>location.href='../paginas/movimientos.php'</script>";
+	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
   }
 
@@ -98,7 +98,7 @@ else { echo' <script>alert("USUARIO NO EXISTE EN LA BASE DE DATOS")</script> ';
 ?>
 </div>
 <center><button type="input"><a href="javascript:imprSelec('cualquier')">IMPRIMIR</a></button><br>
-<a href='../paginas/movimientos.php'>VOLVER</a>
+<a href='../paginas/mostrar_estado.php'>VOLVER</a>
 	<script language="Javascript">
 	function imprSelec (cualquier)
 	{ 

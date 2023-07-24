@@ -60,10 +60,10 @@ echo "<table border=1>";
 }  
 echo "</table>"; }
 else { echo' <script>alert("NO SE ENCONTRO EL MOVIMIENTO PARA USUARIO '.$usuario.'")</script> ';
-	echo "<script>location.href='../paginas/movimientos.php'</script>";
+	echo "<script>location.href='../paginas/mostar_estado.php'</script>";
 }
    }
-echo"<center><a href='../paginas/movimientos.php'>VOLVER</a></center>";
+echo"<center><a href='../paginas/mostrar_estado.php'>VOLVER</a></center>";
 
 ?>
 </div>

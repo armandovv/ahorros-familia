@@ -32,7 +32,7 @@ $mysqli->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg  bg-secondary">
+    <nav class="navbar navbar-expand-lg"   style="background-color: #e3f2fd;">
         <div class="container-fluid">
           <a class="navbar-brand" href="./general.php"><img src="../images/pngegg (1).png" width="55" height="55"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,6 +69,7 @@ $mysqli->close();
           </a>
           <ul class="dropdown-menu">
          <li><a class="dropdown-item" href="./movimientos.php">Movimientos financieros</a></li>
+         <li><a class="dropdown-item" href="./mostrar_estado.php">Mostrar estados de cuentas</a></li>
          </ul>
         </li>
               <li class="nav-item">

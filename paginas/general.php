@@ -32,13 +32,13 @@ $mysqli->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AHORROS FAMILIA</title>
 	<link rel="icon" href="../images/pesos.png">
-    <link rel="stylesheet" href="../css/estilo.css"/>
+  <link rel="stylesheet" href="../css/estilo.css"/>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg  bg-secondary">
+<nav class="navbar navbar-expand-lg"  style="background-color: #e3f2fd;">
   <div class="container-fluid">
     <a class="navbar-brand" href="./general.php"><img src="../images/pngegg (1).png" width="55" height="55"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,6 +76,7 @@ $mysqli->close();
           </a>
           <ul class="dropdown-menu">
          <li><a class="dropdown-item" href="./movimientos.php">Movimientos financieros</a></li>
+         <li><a class="dropdown-item" href="./mostrar_estado.php">Mostrar estados de cuentas</a></li>
          </ul>
         </li>
        
@@ -89,15 +90,36 @@ $_SESSION["nombreusuario"];?></h6>
   </div>
 </nav>
 	
-	<div>
-    <label class="info">Bienvenido al sistema de informacion<br>
-    de ahorros familiar</label>             
-   </div>
-  
 
+  <div class="box1">
+   <h2> Bienvenido al sistema de informacion
+    de ahorros familiar</h2>
+    </div>      
+   
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active"  data-bs-interval="5000">
+      <img src="../images/iStock_000076825001_Small.jpg" class="d-block w-100" alt="..." height="360px">
+    </div>
+    <div class="carousel-item"  data-bs-interval="5000">
+      <img src="../images/ahorro2-e1547087574282.jpg" class="d-block w-100" alt="..." height="360px">
+    </div>
+    <div class="carousel-item"  data-bs-interval="5000">
+      <img src="../images/monedas-y-alcancia.jpg" class="d-block w-100" alt="..." height="360px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
 </body>
 </html>
-?>

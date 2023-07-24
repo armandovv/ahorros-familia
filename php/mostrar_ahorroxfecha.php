@@ -18,12 +18,13 @@ else
 //echo "la coneccion fue exitosa";
 $usuario = $_POST['usuario'];
 $fecha = $_POST['fecha'];
-$sql= "select distinct nombres from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
+$sql= "select distinct nombres, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
 echo"<table>";
 echo'<h3>Apreciado Cliente</h3>';
-echo"<td><h4>",$mostrar['nombres']."</h4></td>";
+echo"<tr><td><h4>",strtoupper($mostrar['nombres']),"</h4></td></tr>";
+echo"<tr><td><h4>" ,'documento ',$mostrar['usuario']."</h4></td></tr>";
 echo"</table>"; } 
 echo "<table border=1>";  
  echo "<td width=100>TOTAL RETIRADO</td>";  
@@ -70,7 +71,7 @@ echo "</table>";
 }
  }
 else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script> ';
-	echo "<script>location.href='../paginas/movimientos.php'</script>";
+	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
    }
 
@@ -78,7 +79,7 @@ else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script>
 ?>
 </div>
 <center><button type="input"><a href="javascript:imprSelec('cualquier')">IMPRIMIR</a></button><br>
-<a href='../paginas/movimientos.php'>VOLVER</a>
+<a href='../paginas/mostrar_estado.php'>VOLVER</a>
 	<script language="Javascript">
 	function imprSelec (cualquier)
 	{ 

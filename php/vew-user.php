@@ -46,10 +46,10 @@ while ($mostrar=mysqli_fetch_array($result))
 	echo'<center>';
 echo "<table border=1>";  
  
-echo '<h4>nombre   ',$mostrar['nombre'].' </h4>';
+echo '<tr><td><h4>nombre </td><td>  ',$mostrar['nombre'].' </h4></td></tr>';
 echo 
-'<h4>telefono  ' ,$mostrar['telefono'].  '  <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</a></h4>';
-echo '<h4>email  ' ,$mostrar['usuario'].'  <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</h4>';
+'<tr><td><h4>telefono </td><td> ' ,$mostrar['telefono'].  '</td><td>  <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</a></h4></td></tr>';
+echo '<tr><td><h4>email </td><td> ' ,$mostrar['usuario'].' </td><td> <a href="../paginas/actualizar_datos.php">  <img src="../images/editar.png" width="20" height="20">'.'</h4></td></tr>';
 }  
 echo "</table>";
 echo'</center>';

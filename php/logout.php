@@ -12,12 +12,16 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
+echo'<script type="text/javascript" language="javascript"> 
 
-session_destroy();
-header("Location:../index.html");
+if(confirm("Seguro que quiere salir?")){
+   
+location.href = "../index.html";}
+else{
+    
+    
+location.href = "../paginas/general.php";}
+</script>';
+
+
 ?>
-<script>
-if(confirm('Seguro que quiere salir?')){
-location.href = 'logout.php';
-}
-</script>

@@ -20,7 +20,7 @@ if($total >= $valor_a_retirar ){
  
  
   $mysqli->query($sql);
-  echo "los datos fueron ingresados correctamemte";
+  echo "los datos fueron ingresados correctamemte  </br>";
 }else{
   echo '<script>alert("EL VALOR SOLICITADO ES SUPERIOR A SU SALDO ACTUAL $',number_format($total).'" )</script> ';
 		

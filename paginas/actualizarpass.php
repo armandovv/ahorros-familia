@@ -62,7 +62,7 @@ return false;
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg  bg-secondary">
+  <nav class="navbar navbar-expand-lg"  style="background-color: #e3f2fd;">
     <div class="container-fluid">
       <a class="navbar-brand" href="./general.php"><img src="../images/pngegg (1).png" width="55" height="55"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,6 +99,7 @@ return false;
           </a>
           <ul class="dropdown-menu">
          <li><a class="dropdown-item" href="./movimientos.php">Movimientos financieros</a></li>
+         <li><a class="dropdown-item" href="./mostrar_estado.php">Mostrar estados de cuentas</a></li>
          </ul>
         </li>
 
