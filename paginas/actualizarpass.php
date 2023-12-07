@@ -89,7 +89,7 @@ return false;
             <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="../php/vew-user.php">editar perfil</a></li>
         <li><a class="dropdown-item" href="./actualizarpass.php">Cambiar contraseña</a></li>
-              <li><a class="dropdown-item" href="../php/logout.php">Cerrar Sesion</a></li>
+              <li><a class="dropdown-item" href="../php/logout.php" onclick="return logout()">Cerrar Sesion</a></li>
             
             </ul>
           </li>
@@ -137,7 +137,7 @@ return false;
    </table> </center>
    <br>
    <center><h5>Su clave debe tener 6 o mas digitos los cuales pueden contener letras y numeros</h5></center>
-   
+   <script src=../js/log_out.js></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
 </body>
 </html>
