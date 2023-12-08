@@ -11,7 +11,7 @@ if (!$conn)
 	exit;}
 
 $usuario = $_POST['usuario'];	
-$fecha = $_POST['fecha'];
+$fecha = date("Y-m-d");
 $valor_a_ahorrar = $_POST['valor_a_ahorrar'];
 $valor_a_retirar = $_POST['valor_a_retirar'];
 $concepto = $_POST['concepto'];

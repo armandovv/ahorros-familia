@@ -101,8 +101,7 @@ $mysqli->close();
                
                 <form action="../php/ingresar_ahorro.php"  method="post">
                     <tr><td>documento usuario</td><td><input type="text"  name="usuario" required/></td></tr>
-                <tr><td>fecha</td><td><input type="date" id="date" name="fecha"  required/></td>
-             </tr>
+               
             <tr><td>ingrese valor a ahorrar</td><td><input type="text" id="val" name="valor_a_ahorrar"  required /></td>
             </tr>
             <tr><td></td><td><input type="hidden" name="valor_a_retirar"/></td>
@@ -116,8 +115,7 @@ $mysqli->close();
         <center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
             <form name="retirar"  action="../php/retirar_ahorro.php" method="post">
                 <tr><td>documento usuario</td><td><input type="text"  name="usuario" id="usuario" required/></td></tr>
-            <tr><td>fecha</td><td><input type="date" id="dates" name="fecha"  required /></td>
-         </tr>
+           
         <tr><td></td><td><input type="hidden" name="valor_a_ahorrar"/></td>
         </tr>
         <tr><td>ingrese valor a retirar</td><td><input type="text" id="ret"  name="valor_a_retirar"   required/></td>

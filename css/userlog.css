@@ -71,3 +71,7 @@ form{
     background-color: #b70e21;
     
    }
+   /* Bootstrap : Hacer que el dropdown se despliegue al pasar el mouse */
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+}
