@@ -75,3 +75,8 @@ form{
 .dropdown:hover .dropdown-menu {
     display: block !important;
 }
+.dropdown-menu .dropdown-item:hover {
+    font-weight:bold;
+    text-decoration: underline;
+    text-decoration-color: rgb(11, 10, 10);
+  }
