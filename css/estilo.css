@@ -30,13 +30,14 @@ body{
 
 
 }
-nav .menu li a{
-
+.dropdown-menu .dropdown-item{
+  background-color: rgb(141, 182, 217);
+  font-size: 20px;
   text-decoration: none;
   color: #000;
   text-transform: uppercase;
   font-family: 'Signika Negative', sans-serif;
-  font-size: 0.9em;
+ 
 
   }
 
@@ -44,8 +45,10 @@ nav .menu li a{
 /* Bootstrap : Hacer que el dropdown se despliegue al pasar el mouse */
 .dropdown:hover .dropdown-menu {
   display: block !important;
+  
 }
 .dropdown-menu .dropdown-item:hover {
+  
   font-weight:bold;
   text-decoration: underline;
   text-decoration-color: rgb(11, 10, 10);
