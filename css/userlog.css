@@ -72,10 +72,10 @@ form{
     
    }
    .dropdown-menu .dropdown-item{
-    background-color: rgb(141, 182, 217);
-    font-size: 20px;
+   
+    font-size: 17px;
     text-decoration: none;
-    color: #000;
+    color: white;
     text-transform: uppercase;
     font-family: 'Signika Negative', sans-serif;
    
@@ -83,10 +83,12 @@ form{
     }
    /* Bootstrap : Hacer que el dropdown se despliegue al pasar el mouse */
 .dropdown:hover .dropdown-menu {
+    background-color: rgb(108, 110, 113);
     display: block !important;
 }
 .dropdown-menu .dropdown-item:hover {
+   
     font-weight:bold;
     text-decoration: underline;
-    text-decoration-color: rgb(11, 10, 10);
+    text-decoration-color: rgb(213, 85, 85);
   }
