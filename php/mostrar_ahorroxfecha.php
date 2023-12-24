@@ -22,6 +22,9 @@ $fecha = date("Y-m-d");
 $sql= "select distinct nombres, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
+echo'<div  align="center">';
+echo'<img src="../images/logo162645.png" width="300" height="160">';
+echo'</div>';
 echo"<table>";
 echo'<h3>Apreciado Cliente</h3>';
 echo"<tr><td><h4>",strtoupper($mostrar['nombres']),"</h4></td></tr>";
@@ -79,7 +82,7 @@ echo "</table>";
 
 }
  }
-else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES '.$fecha.'")</script> ';
+else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES ' ,strtoupper($monthName).'")</script> ';
 	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
    }

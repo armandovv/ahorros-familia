@@ -48,7 +48,7 @@ box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 			
 			echo '<h3>BIENVENIDO ',strtoupper($nombreusuario),' </h3>';
 			
-			echo'<img src="../images/7efs.gif" width="350" height="280">';
+			echo'<img src="../images/ezgif.com-animated-gif-maker.gif" width="350" height="280">';
 			
 			echo"<a href='../paginas/general.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:double;width:90; height:36; color:white'>aceptar</button></a>";
 			
@@ -66,9 +66,11 @@ box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 
 	
 		else {
-			echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
+			
 		
 			echo "<script>location.href='../index.html'</script>";
+			
+			
 		}
 	
 	
