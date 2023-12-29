@@ -68,7 +68,7 @@ box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 		else {
 			
 		
-			echo "<script>location.href='../index.html'</script>";
+			header('location:../index.html');
 			
 			
 		}
