@@ -1,4 +1,7 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 <link rel="icon" href="../images/pesos.png">
+
 <?php
  session_start();
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
@@ -74,3 +77,4 @@ echo "<a href='../paginas/movimientos.php'><button style='border-width: 6px; bor
 
 echo"<a href='../paginas/general.php'>VOLVER</a>";
 ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  

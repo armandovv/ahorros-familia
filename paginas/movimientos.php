@@ -31,9 +31,11 @@ $mysqli->close();
 	<link rel="icon" href="../images/pesos.png">
 	<link rel= "stylesheet"  href="../css/userlog.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+ 
   <script type="text/javascript" language="javascript">
   function confirmar(){
 			var num= document.getElementById('ret').value;
+      
       var user= document.getElementById('usuario').value;
 			if (confirm("¿RETIRAR VALOR $" + new Intl.NumberFormat().format(num)+ " PARA EL USUARIO " + user + "?" )){
 			   document.retirar.submit()
@@ -46,7 +48,9 @@ $mysqli->close();
     }
 		</script>	
 </head>
+
 <body>
+ 
     <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
         <div class="container-fluid">
           <a class="navbar-brand" href="./general.php"><img src="../images/pngegg (1).png" width="55" height="55"></a>
@@ -99,10 +103,10 @@ $mysqli->close();
         <h2> REGISTRAR MOVIMIENTOS </h2>
             <center><table class="shape" border="1"><h2 class="enum"><img src="../images/descarga.png" width="55" height="55" border="2" style="border-radius:50%">CONSIGNACIONES</h2>
                
-                <form action="../php/ingresar_ahorro.php"  method="post">
+                <form class="mov" action="../php/ingresar_ahorro.php"  method="post">
                     <tr><td>documento usuario</td><td><input type="text"  name="usuario" required/></td></tr>
                
-            <tr><td>ingrese valor a ahorrar</td><td><input type="text" id="val" name="valor_a_ahorrar"  required /></td>
+            <tr><td>ingrese valor a ahorrar</td><td><input type="text" id="val" name="valor_a_ahorrar" class="number"  required /></td>
             </tr>
             <tr><td></td><td><input type="hidden" name="valor_a_retirar"/></td>
             </tr>
@@ -113,13 +117,14 @@ $mysqli->close();
             </tr></form>
         </table></center>
         <center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
-            <form name="retirar"  action="../php/retirar_ahorro.php" method="post">
+            <form name="retirar" class="mov" action="../php/retirar_ahorro.php" method="post">
                 <tr><td>documento usuario</td><td><input type="text"  name="usuario" id="usuario" required/></td></tr>
            
         <tr><td></td><td><input type="hidden" name="valor_a_ahorrar"/></td>
         </tr>
-        <tr><td>ingrese valor a retirar</td><td><input type="text" id="ret"  name="valor_a_retirar"   required/></td>
+        <tr><td>ingrese valor a retirar</td><td><input type="text" id="ret"  name="valor_a_retirar" required/></td>
         </tr>
+        
         <tr><td>concepto</td><td><input type="text" id="valps" name="concepto"   required/></td>
         </tr>
         <tr><td><input type="submit" id="sub" class="btn btn-primary" value="retirar valor" onclick="confirmar();"/><input type="reset" class="btn btn-primary" value="limpiar"/></td>
@@ -131,7 +136,7 @@ $mysqli->close();
              
       </div>
         <script src=../js/log_out.js></script>
-          
+         
         
             
               <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 	

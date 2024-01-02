@@ -60,7 +60,7 @@ echo'<th width=200 bgcolor="blue">FECHA</th>';
 echo'<th width=200 bgcolor="blue">VALOR A AHORRAR</th>';
 echo'<th width=200 bgcolor="blue">VALOR A RETIRAR</th>';
 echo'<th width=200 bgcolor="blue">CONCEPTO</th>';
-$sql = "select *from ahorros where year(fecha)>= 2023 and month(fecha)='".$fecha."' and usuario='".$usuario."'";
+$sql = "select *from ahorros where year(fecha)>= 2024 and month(fecha)='".$fecha."' and usuario='".$usuario."'";
 
 
 $result=mysqli_query($mysqli, $sql);  

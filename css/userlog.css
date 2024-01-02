@@ -92,3 +92,12 @@ form{
     text-decoration: underline;
     text-decoration-color: rgb(213, 85, 85);
   }
+  .div-1 .shape{
+    background-color: #719539;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+   
+
+  }
