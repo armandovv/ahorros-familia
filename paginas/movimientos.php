@@ -104,30 +104,30 @@ $mysqli->close();
             <center><table class="shape" border="1"><h2 class="enum"><img src="../images/descarga.png" width="55" height="55" border="2" style="border-radius:50%">CONSIGNACIONES</h2>
                
                 <form class="mov" action="../php/ingresar_ahorro.php"  method="post">
-                    <tr><td>documento usuario</td><td><input type="text"  name="usuario" required/></td></tr>
+                    <tr><td><h4>documento usuario</h4></td><td><input type="text"  name="usuario" required/></td></tr>
                
-            <tr><td>ingrese valor a ahorrar</td><td><input type="text" id="val" name="valor_a_ahorrar" class="number"  required /></td>
+            <tr><td><h4>ingrese valor a ahorrar</h4></td><td><input type="text" id="val" name="valor_a_ahorrar" class="number"  required /></td>
             </tr>
             <tr><td></td><td><input type="hidden" name="valor_a_retirar"/></td>
             </tr>
-            <tr><td>concepto</td><td><input type="text"  id="valp" name="concepto"  required /></td>
+            <tr><td><h4>concepto</h4></td><td><input type="text"  id="valp" name="concepto"  required /></td>
             </tr>
-            <tr><td><input type="submit" id="sub"  class="btn btn-primary" value="ingresar ahorro" /><input type="reset"   class="btn btn-primary"value="limpiar"/></td>
+            <tr><td><input type="submit" id="sub"  class="btn btn-primary" value="ingresar ahorro" /></td><td><input type="reset"   class="btn btn-primary"value="limpiar"/></td>
         
             </tr></form>
         </table></center>
         <center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
             <form name="retirar" class="mov" action="../php/retirar_ahorro.php" method="post">
-                <tr><td>documento usuario</td><td><input type="text"  name="usuario" id="usuario" required/></td></tr>
+                <tr><td><h4>documento usuario</h4></td><td><input type="text"  name="usuario" id="usuario" required/></td></tr>
            
         <tr><td></td><td><input type="hidden" name="valor_a_ahorrar"/></td>
         </tr>
-        <tr><td>ingrese valor a retirar</td><td><input type="text" id="ret"  name="valor_a_retirar" required/></td>
+        <tr><td><h4> valor a retirar</h4></td><td><input type="text" id="ret"  name="valor_a_retirar" required/></td>
         </tr>
         
-        <tr><td>concepto</td><td><input type="text" id="valps" name="concepto"   required/></td>
+        <tr><td><h4>concepto</h4></td><td><input type="text" id="valps" name="concepto"   required/></td>
         </tr>
-        <tr><td><input type="submit" id="sub" class="btn btn-primary" value="retirar valor" onclick="confirmar();"/><input type="reset" class="btn btn-primary" value="limpiar"/></td>
+        <tr><td><input type="submit" id="sub" class="btn btn-primary" value="retirar valor" onclick="confirmar();"/></td><td><input type="reset" class="btn btn-primary" value="limpiar"/></td>
         
         </tr></form>
         </table></center>

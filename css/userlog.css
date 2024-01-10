@@ -90,9 +90,10 @@ form{
    
     font-weight:bold;
     text-decoration: underline;
-    text-decoration-color: rgb(213, 85, 85);
+    text-decoration-color: rgb(10, 1, 36);
   }
   .div-1 .shape{
+    width: 100%;
     background-color: #719539;
     max-width: 550px;
     margin-left: auto;
@@ -100,4 +101,7 @@ form{
     padding: 1.5em;
    
 
+  }
+  .div-1 .shape h4{
+    padding: .1em;
   }
