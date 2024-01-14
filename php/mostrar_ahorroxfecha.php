@@ -22,7 +22,7 @@ $fecha = date("Y-m-d");
 $sql= "select distinct nombres, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 while ($mostrar=mysqli_fetch_array($result)){
-echo'<div  align="center">';
+echo'<div class="bx1" align="center">';
 echo'<img src="../images/logo162645.png" width="300" height="160">';
 echo'</div>';
 echo"<table>";
@@ -54,7 +54,7 @@ $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
 echo"<CENTER><H4>",'MOVIMIENTOS ' ,strtoupper($monthName)."</H4></center>";
-echo'<center><table border=1>';
+echo'<center><table class="table table-bordered  border-primary">';
 echo'<th width=200 bgcolor="blue">ID MOVIMIENTO</th>';
 echo'<th width=200 bgcolor="blue">FECHA</th>';
 echo'<th width=200 bgcolor="blue">VALOR A AHORRAR</th>';
@@ -69,7 +69,7 @@ if($result->num_rows > 0){
 while ($mostrar=mysqli_fetch_array($result))
 {
 	
-echo "<table border=1>";  
+echo "<table class='table table-bordered  border-primary'>";  
  
     echo "<td width=200>",$mostrar['id_movimiento']."</td>";  
     echo "<td width=200 align='center'>",$mostrar['fecha']."</td>";  

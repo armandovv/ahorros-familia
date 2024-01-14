@@ -26,11 +26,12 @@
               <tr> 
                   <td><b> Correo</b></td>
                   <td><input type="email" name="usuario" required class="cajaentradatexto"></td>
+                  <input class="form-control" type="hidden" name="chars" value="8" maxlength="1">
               </tr>
               <tr> 	
                  <td colspan="2">
              <button type="button" onclick="cancelarform()" class="txtrecuperar">Cancelar</button>
-             <input class="txtrecuperar" type="submit" name="btnrecuperar" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar tu contraseña a tu correo?');">
+             <input class="txtrecuperar" type="submit" name="btnrecuperar" value="Enviar" onClick="javascript: return confirm('¿Deseas enviar codigo de recuperacion de contraseña a tu correo?');">
         </td>
               </tr>
           </table>

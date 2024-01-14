@@ -37,9 +37,15 @@ body{
   color: white;
   text-transform: uppercase;
   font-family: 'Signika Negative', sans-serif;
+  
  
 
   }
+  .navbar-expand-lg .container-fluid  .navbar-collapse .navbar-nav  .dropdown-toggle:hover{
+    cursor: pointer;
+ background: #707068;
+ display: block !important;
+}
  /* Bootstrap : Hacer que el dropdown se despliegue al pasar el mouse */
 .dropdown:hover .dropdown-menu {
   background-color: rgb(108, 110, 113);
