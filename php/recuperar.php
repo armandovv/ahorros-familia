@@ -28,8 +28,10 @@ function generatePassword($length)
 $enviarpass 	= generatePassword($length);
 
 $paracorreo 		= $usuario;
-$titulo				= "Recuperar contraseña";
-$mensaje			= "La clave asociada a su cuenta es: $enviarpass, es necesario cambiarla";
+$titulo				= "Recuperar clave de acceso";
+$mensaje			= "Ingresa con el codigo $enviarpass y procede a crear clave nueva.
+                        cordialmente
+						Sistema de informacion ahorro familiar";
 $tucorreo			= "From: varelaarmando430@gmail.com";
 
 (mail($paracorreo,$titulo,$mensaje,$tucorreo));
@@ -50,22 +52,57 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>RECUPERAR CONTRASEÑA</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<style>
+.mb-3{
+
+width: 500px;
+padding-left: 200px;
+}
+.col-auto{
+	width: 500px;
+padding-left: 200px;
+
+}
+.col-auto .btn-primary{
+	width: 300px;
+padding-left: 200px;
+
+}
+
+
+
+	</style>
 </head>
 <body>
 	<table>
-<form action="update_pass.php" method="POST">
-	<tr><td>ingrese el codigo enviado a su correo</td></tr>
-	   <tr><td><input type="text" name="enviarpass"></td></tr>
-	   <tr><td>ingrese una contraseña nueva</td></tr>
-	   <tr><td><input type="password" name="contraseña"></td></tr> 
-	   <tr><td>confirme contraseña</td></tr>
-	   <tr><td><input type="password" name="confirm"></td></tr>
-	   
-	  <tr><td><input type="submit" value="CAMBIAR"></td></tr>
+<form action="update_pass.php" method="POST" onsubmit="return validar()">
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Ingrese el codigo enviado a su correo</label>
+  <input type="text" class="form-control" name="enviarpass" id="exampleFormControlInput1" required>
+
+</div>
+<div class="mb-3">
+<label for="inputPassword5" class="form-label">ingrese una contraseña nueva</label>
+<input type="password" id="inputPassword" class="form-control" name="contraseña" aria-describedby="passwordHelpBlock" required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<div id="passwordHelpBlock" class="form-text">
+ Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros, no pueden haber espacios.
+</div>
+</div>
+<div class="mb-3">
+<label for="inputPassword5" class="form-label">confirme su contraseña</label>
+<input type="password" id="inputPassword5" class="form-control" name="confirm" aria-describedby="passwordHelpBlock" required >
+</div>
+<div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Cambiar</button>
+  </div>
 </form>
 
 
 	</table>
+	<script src="../js/comparepass.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 
 </body>
 </html>
