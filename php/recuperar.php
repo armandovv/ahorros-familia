@@ -55,20 +55,38 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
 	
 	<title>RECUPERAR CONTRASEÑA</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<style>
-.mb-3{
+ 
 
-width: 500px;
-padding-left: 200px;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
+   <style>
+ form{
+    
+    padding-top: 90px;
+    
+}
+.mb-3{
+	max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+   
 }
 .col-auto{
-	width: 500px;
-padding-left: 200px;
+	max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
 
 }
 .col-auto .btn-primary{
-	width: 300px;
-padding-left: 200px;
+	width: 100%;
+    background-color: blue;
+    border: 0;
+    text-transform: uppercase;
+    padding: 1em;
+    font-size: 1em;
+    letter-spacing: .1em;
+    border-radius: .3em;
 
 }
 
@@ -85,15 +103,15 @@ padding-left: 200px;
 
 </div>
 <div class="mb-3">
-<label for="inputPassword5" class="form-label">ingrese una contraseña nueva</label>
-<input type="password" id="inputPassword" class="form-control" name="contraseña" aria-describedby="passwordHelpBlock" required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<label for="inputPassword" class="form-label">ingrese una contraseña nueva</label>
+<input type="password" id="inputPassword" class="form-control" name="contraseña"  required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
 <div id="passwordHelpBlock" class="form-text">
  Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros, no pueden haber espacios.
 </div>
 </div>
 <div class="mb-3">
 <label for="inputPassword5" class="form-label">confirme su contraseña</label>
-<input type="password" id="inputPassword5" class="form-control" name="confirm" aria-describedby="passwordHelpBlock" required >
+<input type="password" id="inputPassword5" class="form-control" name="confirm" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
 </div>
 <div class="col-auto">
     <button type="submit" class="btn btn-primary mb-3">Cambiar</button>

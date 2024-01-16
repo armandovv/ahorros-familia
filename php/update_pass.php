@@ -8,7 +8,10 @@ $conn= mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 $enviarpass = $_POST['enviarpass'];
 $contraseña = $_POST['contraseña'];
+$confirm = $_POST['confirm'];
 
+if($contraseña==$confirm)
+{
 $query =mysqli_query ($conn,"select *from login where enviarpass='".$enviarpass."'");
 	$nr= mysqli_num_rows($query);
 	if ($nr==1)
@@ -22,8 +25,12 @@ $query =mysqli_query ($conn,"select *from login where enviarpass='".$enviarpass.
     }
     else{
 
-        echo "<script> alert('codigo incorrecto');window.location= 'recuperar.php' </script>";
+        echo "<script> alert('CODIGO DE RECUPERACION INCORRECTO, INTENTELO DE NUEVO');window.location= '../index.html' </script>";
     }
+}
+    else{
 
+        echo "<script> alert('VERIFIQUE LA INFORMACION INGRESADA E INTENTE DE NUEVO');window.location= '../index.html' </script>"; 
+    }
 
 ?>
