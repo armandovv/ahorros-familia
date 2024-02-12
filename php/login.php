@@ -1,79 +1,134 @@
 <?php
-//include("connect_db.php");
+session_start();
+ 
+// Conexión a la base de datos
+$db = mysqli_connect('127.0.0.1', 'root', '', 'ahorros_familia');
+ 
+$errors ='Nombre de usuario/contraseña inválidos';
 
-//$miconexion = new connect_db;
-
-
-$dbhost= "127.0.0.1";
-$dbuser="root";
-$dbpass="";
-$dbname="ahorros_familia";
-$conn= mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-if (!$conn)
-  {echo " LO SENTIMOS, ESTE SITIO WEB ESTA EXPERIMENTANDO PROBLEMAS  <BR>";
-	echo "error: Fallo al conectarse a mysql debido a : <br>";
-		echo"errno: " . $mysqli->connect_errno . "<br>";
-	exit;}
-
-	$usuario=$_POST['usuario'];
-	$contraseña=$_POST['contraseña'];
-
-
-	//la variable  $mysqli viene de connect_db que lo traigo con el require("connect_db.php");
-	$query =mysqli_query ($conn,"select *from login where usuario='".$usuario."' and contraseña = '".$contraseña."'");
-	$nr= mysqli_num_rows($query);
-	if ($nr==1)
-	{ 
-		
-		session_start();
-		$_SESSION['usuario'] = $usuario;
+// Si se ha enviado el formulario
+if (isset($_POST['login_button'])) {
+  $usuario = mysqli_real_escape_string($db, $_POST['usuario']);
+  $contraseña = mysqli_real_escape_string($db, $_POST['contraseña']);
+ 
+  // Comprobar si el nombre de usuario es válido
+  $query = "select usuario, nombre, contraseña from login where usuario='".$usuario."'";
+  $results = mysqli_query($db, $query);
+ 
+  if (mysqli_num_rows($results) == 1) {
+    // Nombre de usuario válido, verificar contraseña
+    $row = mysqli_fetch_assoc($results);
+    if (password_verify($contraseña, $row['contraseña'])) {
+      // Inicio de sesión válido
+      $_SESSION['usuario'] = $usuario;
 	
 	
 	
-			$fila = $query->fetch_row();
+			
 	
-			/* la columna cuatro corresponde con la columna del nombre completo */
-			$nombreusuario = $fila[3];
+			/* la columna uno corresponde con la columna del nombre completo */
+			$nombreusuario = $row['nombre'];
 	
 			/* Podrías guardarlo como variable de sesión */
-			$_SESSION['nombreusuario'] = $nombreusuario;
-	
-			/* liberar el conjunto de resultados */
-			echo'<center>';
-			echo'<div style=" border-color: gray; border-style: solid; border-radius:5px;
-			border-width: 1px; width:500; height:370;
-			-webkit-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);
--moz-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);
-box-shadow: -1px 1px 7px 1px rgba(0,0,0,0.75);">';
 			
-			echo '<h3>BIENVENIDO ',strtoupper($nombreusuario),' </h3>';
-			
-			echo'<img src="../images/ezgif.com-animated-gif-maker.gif" width="350" height="280">';
-			
-			echo"<a href='../paginas/general.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:double;width:90; height:36; color:white'>aceptar</button></a>";
-			
-			echo'</div>';
-			echo'</center>';
+      $_SESSION['nombreusuario'] = $nombreusuario;
+      header('location:../paginas/general.php');
+     
+    } else {
+      // Contraseña inválida
+      $errors;
+    }
+  } else {
+    // Nombre de usuario inválido
+    $errors;
+  }
+}
+	?>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Inicio de sesion</title>
+		<link rel="icon" href="../images/pesos.png">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{
 
-		}
-			
-			
-			
-		
-		
-	
+  background-color: #EAEDED;
+  background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+}
+ 
+.toast{
+ 
+  margin-left: auto;
+    margin-right: auto;
+    position: relative;
+top: 170px;
+ 
+  border: 1px solid rgba(0,0,0,.1);
+  
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.5);
+  max-width: 310px;
+  height: 95px;
+  width: 320px;
+  background-color: #ffffff;
+  opacity: 1;
+
+}
+.toast .toast-header{
+ 
+  height: 50px;
+  background-color: #ffffff;
+  opacity: 1;
+}
+ a{
+  width: 20px;
+  position: relative;
+bottom: 13px; left: 44px;
+
+}
+small{
+  right: 20px;
+}
 
 
-	
-		else {
-			
-		
-			header('location:../index.html');
-			
-			
-		}
-	
-	
-	
 
-?>
+ .btn-close{
+ background-color:red;
+ height: 20px;
+  border: 0;
+
+
+ 
+ 
+}
+.toast .toast-body{
+  height: 100px;
+  text-align: center;
+  color: red;
+}
+
+</style>
+
+ 
+	</head>
+	<body>
+  <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-bs-autohide="false">
+  <div class="toast-header">
+    <img src="../images/logo162645.png" width="35px" height="30px" class="rounded me-2" alt="...">
+    <strong class="me-auto">Inicio de sesion</strong>
+    <small>acceso denegado</small>
+   <a href="../index.html" ><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close">X</button></a>
+  </div>
+  <div class="toast-body">
+   <?php echo $errors; ?>
+  </div>
+</div>
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+	</body>
+	</html>

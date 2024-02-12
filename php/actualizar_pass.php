@@ -11,12 +11,14 @@ if (!$conn)
 	exit;}
 
 	$contraseña=$_POST['contraseña'];
-	$nueva=$_POST['nueva'];
-
+	$nombre=$_POST['nombre'];
+	
 
 	
-	$query =mysqli_query ($conn,"select *from login where contraseña = '".$contraseña."'");
+	$query =mysqli_query ($conn,"select *from login where nombre='".$nombre."'");
 	$nr= mysqli_num_rows($query);
+	$mostrar = mysqli_fetch_array($query);
+	 password_verify($contraseña,$mostrar['contraseña']);
 	if ($nr!=1)
 	{ echo '<script>alert("LA CONTRASEÑA ACTUAL INGRESADA NO CORRESPONDE A SU CLAVE ACTUAL")</script> ';
 		
@@ -33,8 +35,10 @@ if (!$conn)
 
 	
 		else {
+			$contraseña=$_POST['nueva'];
+			$contraseña = password_hash($contraseña,PASSWORD_DEFAULT);
 			
-            $query =mysqli_query($conn,"update login set contraseña=('".$nueva."')");
+            $query =mysqli_query($conn,"update login set contraseña='".$contraseña."'");
             
 			
 			echo '<center><h3>SE CAMBIO EXITOSAMENTE LA CONTRASEÑA</h3><center><br> ';

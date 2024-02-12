@@ -35,9 +35,10 @@ $documento = $_POST['documento'];
 $nombres = $_POST['nombres'];
 $email = $_POST['email'];
 $telefono = $_POST['telefono'];
+$sendpass = $_POST['sendpass'];
 
 
- $sql = "INSERT INTO usuarios Values('".$documento."','".$nombres."','".$email."','".$telefono."')";
+ $sql = "INSERT INTO usuarios Values('".$documento."','".$nombres."','".$email."','".$telefono."', '".$sendpass."') ";
  
   $mysqli->query($sql);
   echo "se ha creado el usuario satisfactoriamente  </br>";

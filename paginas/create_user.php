@@ -91,6 +91,7 @@ $mysqli->close();
 <tr><td>nombres y apellidos</td><td><input type="text" name="nombres" required></td></tr>
 <tr><td>correo</td><td><input type="text" name="email" required></td></tr>
 <tr><td>telefono</td><td><input type="text" name="telefono" required></td></tr>
+<input type="hidden" name="sendpass">
 <tr><td><input type="submit" value="crear usuario"></td></tr>
 
 </table>

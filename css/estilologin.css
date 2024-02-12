@@ -24,7 +24,7 @@ body{
 
 .mb-3{
     
-    background-color: #14180e;
+    background-color: #d1d7c7;
     max-width: 550px;
     margin-left: auto;
     margin-right: auto;
@@ -42,7 +42,7 @@ body{
     font-family: 'Lato';
 }
 .form-control {
-    width: 100%;
+    width: 70%;
     padding: .7em;
     border: none;
     background: none;
@@ -72,9 +72,18 @@ body{
    
 
 } 
-.mb-3 a{
 
-    color: #ebe5e5;
+.password-icon {
+    float: right;
+    position: relative;
+    margin: -25px 10px 0 0;
+    cursor: pointer;
+}
+.mb-4 .mb-3 .ref{
+
+    color: #06467a;
+    text-decoration-line: underline;
+	cursor:pointer;
 
 } 
 .caja_popup 
@@ -100,11 +109,7 @@ body{
 	
 	
 }
-a
-{
-	text-decoration-line: underline;
-	cursor:pointer;
-}
+
 table
 {
 	text-align:center;

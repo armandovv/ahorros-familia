@@ -1,9 +1,20 @@
 <?php
+sleep(1);
 $dbhost= "127.0.0.1";
 $dbuser="root";
 $dbpass="";
 $dbname="ahorros_familia";
 $conn= mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+error_reporting(0);
+
+$mysqli = new mysqli('127.0.0.1','root','','ahorros_familia');
+
+if ($mysqli->connect_errno) {
+	echo " LO SENTIMOS, ESTE SITIO WEB ESTA EXPERIMENTANDO PROBLEMAS  <BR>";
+echo "error: Fallo al conectarse a mysql debido a : <br>";
+    echo"errno: " . $mysqli->connect_errno . "<br>";
+exit;
+}
 
 $usuario = $_POST['usuario'];
 $length = (int)$_POST['chars'];
@@ -26,10 +37,10 @@ function generatePassword($length)
 	return $key;
 }
 $enviarpass 	= generatePassword($length);
-
+$nombre = $mostrar['nombre'];
 $paracorreo 		= $usuario;
 $titulo				= "Recuperar clave de acceso";
-$mensaje			= "Ingresa con el codigo $enviarpass y procede a crear clave nueva.
+$mensaje			= "Hola $nombre Ingresa con el codigo $enviarpass y procede a crear clave nueva.
                         cordialmente
 						Sistema de informacion ahorro familiar";
 $tucorreo			= "From: varelaarmando430@gmail.com";
@@ -55,7 +66,9 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
 	
 	<title>RECUPERAR CONTRASEÑA</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
- 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
    <style>
@@ -87,15 +100,41 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
     font-size: 1em;
     letter-spacing: .1em;
     border-radius: .3em;
-
 }
 
 
 
 	</style>
+	<script>
+ window.addEventListener("load", function() {
+
+// icono para mostrar contraseña
+showPassword = document.querySelector('.show-password');
+showPassword.addEventListener('click', () => {
+
+	// elementos input de tipo clave
+	password1 = document.querySelector('.password1');
+	password2 = document.querySelector('.password2');
+
+	if ( password1.type === "text" ) {
+		password1.type = "password"
+		password2.type = "password"
+		showPassword.classList.remove('fa-eye-slash');
+	} else {
+		password1.type = "text"
+		password2.type = "text"
+		showPassword.classList.toggle("fa-eye-slash");
+	}
+
+})
+
+});
+
+	</script>
 </head>
 <body>
-	<table>
+
+<table>
 <form action="update_pass.php" method="POST" onsubmit="return validar()">
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Ingrese el codigo enviado a su correo</label>
@@ -104,14 +143,15 @@ $tucorreo			= "From: varelaarmando430@gmail.com";
 </div>
 <div class="mb-3">
 <label for="inputPassword" class="form-label">ingrese una contraseña nueva</label>
-<input type="password" id="inputPassword" class="form-control" name="contraseña"  required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<input type="password" id="inputPassword" class="form-control  password1" name="contraseña"  required  pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<span class="fa fa-fw fa-eye password-icon show-password"></span>
 <div id="passwordHelpBlock" class="form-text">
  Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros, no pueden haber espacios.
 </div>
 </div>
 <div class="mb-3">
 <label for="inputPassword5" class="form-label">confirme su contraseña</label>
-<input type="password" id="inputPassword5" class="form-control" name="confirm" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
+<input type="password" id="inputPassword5" class="form-control  password2" name="confirm" required pattern=".{6,}" title="Su contraseña debe tener 6 o mas caracteres, puede incluir letras y numeros">
 </div>
 <div class="col-auto">
     <button type="submit" class="btn btn-primary mb-3">Cambiar</button>

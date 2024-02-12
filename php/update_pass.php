@@ -16,7 +16,8 @@ $query =mysqli_query ($conn,"select *from login where enviarpass='".$enviarpass.
 	$nr= mysqli_num_rows($query);
 	if ($nr==1)
 	{ 
-
+        $contraseña = password_hash($contraseña,PASSWORD_DEFAULT);
+   
 
         $query =mysqli_query($conn,"update login set contraseña='".$contraseña."'");
         echo "<script> alert('se cambio la contraseña');window.location= '../index.html' </script>";

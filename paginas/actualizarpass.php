@@ -115,6 +115,7 @@ return false;
   </nav>
   <br>
   <center> <table border="3"><form action="../php/actualizar_pass.php" onsubmit="return validar()" method="post">
+  <input type="hidden" name="nombre" value="<?php echo $_SESSION['nombreusuario']; ?>" /> 
 <tr><td>INGRESE CONTRASEÑA ACTUAL </td><td><input type="password" id="contraseña" name="contraseña"></td>
 
 </tr>

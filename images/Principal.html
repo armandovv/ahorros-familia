@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://localhost/sistema_para_usuarios/paginashtml/main.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <link rel="stylesheet" type="text/css" href="./Principal_files/stylemain.css">
+    <link href="./Principal_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-secondary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="http://localhost/sistema_para_usuarios/paginashtml/main.php"><img src="./Principal_files/hogar.png" alt="" width="40" height="40" class="d-inline-block align-text-top"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://localhost/sistema_para_usuarios/paginashtml/main.php#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./Principal_files/enviar.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">Documentos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/conexionphp/certificado.php"> Certificado de ahorro</a></li>
+            <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/paginashtml/solicitud.html">Solicitud credito</a></li>
+           
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://localhost/sistema_para_usuarios/paginashtml/main.php#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="./Principal_files/pago-por-clic.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> Pagos</a>
+          <ul class="dropdown-menu">
+        
+        
+        <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/paginashtml/formpagos.php">Pagos</a></li>
+        <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/paginashtml/enviar.php"> Envio a otro usuario</a></li>
+</ul>
+</li>
+<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://localhost/sistema_para_usuarios/paginashtml/main.php#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./Principal_files/User_icon_2.svg.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top"> martha isabel varela hormiga          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/conexionphp/perfil.php">Perfil</a></li>
+            <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/paginashtml/formpass.php">Cambiar contraseña</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="http://localhost/sistema_para_usuarios/conexionphp/logout.php">Cerrar sesion</a></li>
+          </ul>
+        </li>
+      
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="card text-center">
+  <div class="card-header">
+    AUTOGESTION SISTEMA DE INFORMACION AHORROS FAMILIAR
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> MARTHA ISABEL VARELA HORMIGA</h5>
+    <p class="card-text">Saldo disponible </p><h5>$841,360</h5><p></p>
+   
+  </div>
+  <div class="card-footer text-body-secondary">
+   Ultimo acceso  2024-02-05 23:00:02  </div>
+</div>
+<h2 class="info">Bienvenido al sistema de informacion de ahorros familiar</h2>
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Movimientos</h5>
+        <form action="http://localhost/sistema_para_usuarios/conexionphp/mostrarmovimientos.php" method="post">
+        <p class="card-text"></p>
+
+        <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <form action="http://localhost/sistema_para_usuarios/conexionphp/mostrarmovimientosxmes.php" method="post">
+        <h5 class="card-title">Movimientos por mes</h5>
+        <p class="card-text"> <select name="fecha" class="fecha" id="month" style="color:#0ba842 ;" width="30" required="">
+        <option value="">-----Seleccione mes-----</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                     <option value="9">Septiembre</option>
+                     <option value="10">Octubre</option>
+                     <option value="11">Noviembre</option>
+                     <option value="12">Diciembre</option>
+                    </select></p>
+
+        <button type="submit" class="btn btn-primary">Consultar</button> 
+</form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./Principal_files/bootstrap.bundle.min.js.descarga" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script> 
+
+</body></html>

@@ -32,7 +32,7 @@ $mysqli->close();
 <th width=300 bgcolor="blue">NOMBRE COMPLETO</th>
 <th width=300 bgcolor="blue">CORREO</th>
 <th width=300 bgcolor="blue">TELEFONO</th>
-<th width=30 style='border-width:0pxcolor:white'></th>
+<th width=30 style='border-width:0px'color:white></th>
 
 </table><center>
   
@@ -68,13 +68,12 @@ echo "<table border=1>";
      
 }  
 echo "</table>"; 
-echo "<a href='../paginas/movimientos.php'><button style='border-width: 6px; border-radius:14%; background-color: #3C66F4; border-color:#F5F7F9; border-style:solid;width:200; height:44; color:white'>CONSULTA DE MOVIMIENTOS</button></a><br>";
 
-
+echo "<p>";
     
 
 }
 
-echo"<a href='../paginas/general.php'>VOLVER</a>";
+
 ?>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+<a href='../paginas/general.php'>VOLVER</a>

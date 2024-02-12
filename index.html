@@ -7,18 +7,48 @@
     <title>LOGIN</title>
     <link rel="icon" href="./images/images.png">
     <link rel="stylesheet" type="text/css" href="./css/estilologin.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100;1,200&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ">
-   
    
 
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+   <script>
+
+    window.addEventListener("load", function() {
+
+      // icono para mostrar contraseña
+      showPassword = document.querySelector('.show-password');
+      showPassword.addEventListener('click', () => {
+
+          // elementos input de tipo clave
+          password1 = document.querySelector('.password1');
+        
+
+          if ( password1.type === "text" ) {
+              password1.type = "password"
+             
+              showPassword.classList.remove('fa-eye-slash');
+          } else {
+              password1.type = "text"
+             
+              showPassword.classList.toggle("fa-eye-slash");
+          }
+
+      })
+
+  });
+
+
+
+
+
+   </script>
+   </head>
 <body>
+ 
   <div class="caja_popup" id="formrecuperar">
     <form action="./php/recuperar.php" class="contenedor_popup" method="POST">
           <table>
@@ -42,21 +72,20 @@
     <form  action="./php/login.php" method="post">
       <div class="mb-4">
     <div class="mb-3">
-     <div> <h2 class="title">INGRESO AL SISTEMA DE INFORMACION DE AHORROS FAMILIAR</h2></div>
+      <div> <h2 class="title">INGRESO AL SISTEMA DE INFORMACION DE AHORROS FAMILIAR</h2></div>
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="text" class="form-control" id="exampleInputEmail1"  name="usuario" required >
        
-      </div>
-      <div class="mb-3">
+     
         <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" name="contraseña" required >
-        <a onclick="abrirform()">Olvidó su contraseña?</a>
-      </div>
+        <input type="password" class="form-control  password1" id="exampleInputPassword1" name="contraseña" required >
+       
+        <span class="fa fa-fw fa-eye password-icon show-password"></span>
       
-      <div class="mb-3">
+        <a class="ref" onclick="abrirform()">¿Olvidó su contraseña?</a><p>
+     
        
-       
-      <input type="submit" class="btn btn-primary" value="INGRESAR" onclick="login()"/>
+      <input type="submit" name="login_button" class="btn btn-primary" value="INGRESAR" onclick="login()"/>
     </div>
   </div>
  
