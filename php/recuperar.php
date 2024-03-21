@@ -133,6 +133,12 @@ showPassword.addEventListener('click', () => {
 	</script>
 </head>
 <body>
+	<style>
+
+
+
+		
+	</style>
 
 <table>
 <form action="update_pass.php" method="POST" onsubmit="return validar()">

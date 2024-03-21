@@ -26,9 +26,9 @@ echo'<div class="bx1" align="center">';
 echo'<img src="../images/logo162645.png" width="300" height="160">';
 echo'</div>';
 echo"<table>";
-echo'<h3>Apreciado Cliente</h3>';
-echo"<tr><td><h4>",strtoupper($mostrar['nombres']),"</h4></td></tr>";
-echo"<tr><td><h4>" ,'documento ',$mostrar['usuario']."</h4></td></tr>";
+echo'<h6>Apreciado Cliente</h6>';
+echo"<tr><td><h6>",strtoupper($mostrar['nombres']),"</h6></td></tr>";
+echo"<tr><td><h6>" ,'Documento ',$mostrar['usuario']."</h6></td></tr>";
 echo"</table>"; } 
 echo "<table border=1>";  
  echo "<td width=100>TOTAL RETIRADO</td>";  
@@ -53,8 +53,8 @@ setlocale(LC_ALL, 'spanish');
 $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
-echo"<CENTER><H4>",'MOVIMIENTOS ' ,strtoupper($monthName)."</H4></center>";
-echo'<center><table class="table table-bordered  border-primary">';
+echo"<CENTER><H5>",'MOVIMIENTOS ' ,strtoupper($monthName)."</H5></center>";
+echo'<center><table>';
 echo'<th width=200 bgcolor="blue">ID MOVIMIENTO</th>';
 echo'<th width=200 bgcolor="blue">FECHA</th>';
 echo'<th width=200 bgcolor="blue">VALOR A AHORRAR</th>';
@@ -69,7 +69,7 @@ if($result->num_rows > 0){
 while ($mostrar=mysqli_fetch_array($result))
 {
 	
-echo "<table class='table table-bordered  border-primary'>";  
+echo "<table>";  
  
     echo "<td width=200>",$mostrar['id_movimiento']."</td>";  
     echo "<td width=200 align='center'>",$mostrar['fecha']."</td>";  
