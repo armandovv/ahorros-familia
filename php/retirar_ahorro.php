@@ -36,7 +36,7 @@ $fecha = date("Y-m-d");
 $queryuser =mysqli_query ($conn,"select distinct documento, nombres, telefono, email, fecha, valor_a_retirar, concepto from usuarios inner join ahorros on usuarios.documento = ahorros.usuario where usuario= '".$usuario."' and fecha = '".$fecha."'  order by id_movimiento desc limit 1");
  $mostrar		= mysqli_fetch_array($queryuser); 
 $valor_a_retirar = $mostrar['valor_a_retirar'];
-$nombres = $mostrar['nombres'];
+$nombres = ucwords($mostrar['nombres']);
 $fecha = $mostrar['fecha'];
 $paraemail = $mostrar['email'];
 $concepto = $mostrar['concepto'];

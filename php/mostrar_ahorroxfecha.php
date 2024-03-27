@@ -1,8 +1,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<div id='cualquier'>
-
-
-
+<nav class="navbar bg-body-tertiary ">
+  <form class="container-fluid justify-content-start">
+    <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar extracto</button>
+    <a href='../paginas/mostrar_estado.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
+  </form>
+</nav>
+</header>
+<div class="doc" id='content'>
 <?php
 error_reporting(0);
 
@@ -72,7 +76,7 @@ while ($mostrar=mysqli_fetch_array($result))
 echo "<table>";  
  
     echo "<td width=200>",$mostrar['id_movimiento']."</td>";  
-    echo "<td width=200 align='center'>",$mostrar['fecha']."</td>";  
+    echo "<td width=200>",$mostrar['fecha']."</td>";  
 	echo "<td width=200>",number_format($mostrar['valor_a_ahorrar'])."</td>";  
 	echo "<td width=200>",number_format($mostrar['valor_a_retirar'])."</td>";  
     echo "<td width=200 align='center'>",$mostrar['concepto']."</td>"; 
@@ -90,17 +94,24 @@ else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES ' ,strtoupper($monthN
 
 ?>
 </div>
-<center><button type="input"><a href="javascript:imprSelec('cualquier')">IMPRIMIR</a></button><br>
-<a href='../paginas/mostrar_estado.php'>VOLVER</a>
-	<script language="Javascript">
-	function imprSelec (cualquier)
-	{ 
-	var ficha=document.getElementById(cualquier);
-	var ventimp=window.open('','popimpr');
-	ventimp.document.write( ficha.innerHTML );
-	ventimp.document.close();
-	ventimp.print();
-	ventimp.close();
-	}
-	</script>	</center>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function createPDF() {
+      var element = document.getElementById('content');
+var opt = {
+  margin:       1,
+  filename:     'extracto.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 2 },
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'Landscape' }
+};
+
+// New Promise-based usage:
+html2pdf().set(opt).from(element).save();
+
+// Old monolithic-style usage:
+html2pdf(element, opt);
+    }
+</script>	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+
