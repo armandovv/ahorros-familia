@@ -13,6 +13,7 @@ else if
  $sql= "select *from login where usuario= '".$_SESSION['nombreusuario']."'";
 
 $mysqli->query($sql);
+$sql= "select valor_a_retirar";
 }else {
   echo '<script>alert("SE CERRO LA SESION DE FORMA INESPERADA")</script> ';
 

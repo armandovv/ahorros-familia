@@ -42,7 +42,7 @@ if (!$conn)
             
 			
 			echo '<center><h3>SE CAMBIO EXITOSAMENTE LA CONTRASEÑA</h3><center><br> ';
-			echo'<center><img src="../images/7efs.gif" width="350" height="350"></center>';
+			echo'<center><img src="../images/ezgif.com-animated-gif-maker.gif" width="350" height="350"></center>';
 			echo"<a href='../paginas/general.php'>VOLVER</a>";
 			
 
