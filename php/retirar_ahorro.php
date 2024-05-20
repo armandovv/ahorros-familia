@@ -12,6 +12,11 @@ if (!$conn)
 	exit;
 }
 else{
+  $usuario = $_POST['usuario'];	
+
+  $queryuser =mysqli_query ($conn,"select distinct documento from usuarios inner join ahorros on usuarios.documento = ahorros.usuario where usuario= '".$usuario."'");
+  $nr= mysqli_num_rows($queryuser);
+  if ($nr>0){
 $usuario = $_POST['usuario'];	
 $fecha = date("Y-m-d");
 $valor_a_ahorrar = $_POST['valor_a_ahorrar'];
@@ -20,6 +25,7 @@ $concepto = $_POST['concepto'];
 $cosulta= mysqli_query($conn, "select (sum(valor_a_ahorrar)-sum(valor_a_retirar)) as mtotal from ahorros where usuario='".$usuario."'");
 $row = mysqli_fetch_array($cosulta);
 $total=$row['mtotal'];
+  
 if($total >= $valor_a_retirar ){
  $query =mysqli_query($conn, "INSERT INTO ahorros Values(null,'".$usuario."','".$fecha."','".$valor_a_ahorrar."','".$valor_a_retirar."','".$concepto."')");
  
@@ -29,7 +35,7 @@ if($total >= $valor_a_retirar ){
   header('location:declined_tranasaction.php?saldo='.$total.'&user='.$usuario.'');
 
 }
-}
+
 $fecha = date("Y-m-d");
 $queryuser =mysqli_query ($conn,"select distinct documento, nombres, telefono, email, fecha, valor_a_retirar, concepto from usuarios inner join ahorros on usuarios.documento = ahorros.usuario where usuario= '".$usuario."' and fecha = '".$fecha."'  order by id_movimiento desc limit 1");
  $mostrar		= mysqli_fetch_array($queryuser); 
@@ -50,6 +56,15 @@ $tucorreo = "From: varelaarmando430@gmail.com";
 (mail($paraemail,$titulo,$mensaje,$tucorreo));
 
 echo"<a href='../paginas/movimientos.php'>VOLVER</a>";
+
+
+}else{
+  echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO ESTA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
+		
+  echo "<script>location.href='../paginas/movimientos.php'</script>";
+
+} 
+}
 ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!DOCTYPE html>

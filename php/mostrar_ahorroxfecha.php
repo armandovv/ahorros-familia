@@ -1,11 +1,13 @@
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
 <nav class="navbar bg-body-tertiary ">
   <form class="container-fluid justify-content-start">
     <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar extracto</button>
     <a href='../paginas/mostrar_estado.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
   </form>
 </nav>
-</header>
+
 <div class="doc" id='content'>
 <?php
 error_reporting(0);
