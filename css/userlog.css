@@ -99,8 +99,8 @@ form{
   }
   .div-1 .shape{
     width: 100%;
-    background-color: #719539;
-    max-width: 550px;
+    background-color: #d0d6c5;
+    max-width: 460px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.5em;
@@ -109,4 +109,5 @@ form{
   }
   .div-1 .shape h4{
     padding: .1em;
+    font-family:'Helvetica','Verdana','Monaco',sans-serif;
   }
