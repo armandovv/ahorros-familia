@@ -51,6 +51,9 @@ $mensaje ="Apreciado(a) $nombres:
           Valor: $$valor_a_retirar
           Concepto: $concepto
           Fecha: $fecha
+
+
+          SISTEMA DE INFORMACION AHORRO FAMILIAR
 ";
 $tucorreo = "From: varelaarmando430@gmail.com";
 (mail($paraemail,$titulo,$mensaje,$tucorreo));

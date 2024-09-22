@@ -24,13 +24,18 @@ body{
 
 .mb-3{
     
-    background-color: #d1d7c7;
+    background-color: #e8f2f3;
     max-width: 550px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.5em;
    
     
+}
+
+.mb-3 .top{
+
+    text-align: center;
 }
  form{
     

@@ -47,6 +47,66 @@ $mysqli->close();
 			}
     }
 		</script>	
+    <style>
+        /* Estilos del spinner */
+        .spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #miModal {
+            display: none; /* Oculto por defecto */
+            position: fixed; /* Fijo en la pantalla */
+            z-index: 1000; /* Encima de otros contenidos */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Alto completo */
+            overflow: auto; /* Desplazamiento si es necesario */
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+        }
+
+        /* Contenedor del contenido del modal */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% desde la parte superior y centrado */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ancho del modal */
+            max-width: 600px; /* Ancho máximo del modal */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+        /* Estilos del botón de cerrar */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+    </style>
 </head>
 
 <body>
@@ -100,11 +160,11 @@ $mysqli->close();
         </div>
       </nav>
       <div class= "div-1">
-        <h2> REGISTRAR MOVIMIENTOS </h2>
+        <h2> REGISTRAR MOVIMIENTOS </h2><a href="solicitudcredito.php"> <button type="submit" style="align-items: end;" class="btn btn-primary">SOLICITUD DE CREDITO</button></a>
             <center><table class="shape" border="1"><h2 class="enum"><img src="../images/descarga.png" width="55" height="55" border="2" style="border-radius:50%">CONSIGNACIONES</h2>
                
-                <form class="mov" action="../php/ingresar_ahorro.php"  method="post">
-                    <tr><td><h4>documento usuario</h4></td><td><input type="text"  name="usuario" required/></td></tr>
+                <form id="ingresar" class="mov" action="../php/ingresar_ahorro.php"  method="post">
+                    <tr><td><h4>documento usuario</h4></td><td><input type="text" id="user"  name="usuario" required/></td></tr>
                
             <tr><td><h4>ingrese valor a ahorrar</h4></td><td><input type="text" id="val" name="valor_a_ahorrar" class="number"  required /></td>
             </tr>
@@ -115,8 +175,18 @@ $mysqli->close();
             <tr><td><input type="submit" id="sub"  class="btn btn-primary" value="ingresar ahorro" /></td><td><input type="reset"   class="btn btn-primary"value="limpiar"/></td>
         
             </tr></form>
+            <div id="miModal">
+        <div class="modal-content">
+            <span class="close" id="cerrarModal">&times;</span>
+            <div id="mensaje"></div>
+        </div>
+    </div>
+          <div class="spinner" id="spinner">
+            
+          </div>
+
         </table></center>
-        <center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2>
+        <center><table class="shape" border="1"><h2 class="enum"><img src="../images/withdraw-money-icon-vector.webp" width="55" height="55" border="2" style="border-radius:50%">RETIROS CAPITAL</h2> 
             <form name="retirar" class="mov" action="../php/retirar_ahorro.php" method="post">
                 <tr><td><h4>documento usuario</h4></td><td><input type="text"  name="usuario" id="usuario" required/></td></tr>
            
@@ -130,17 +200,54 @@ $mysqli->close();
         <tr><td><input type="submit" id="sub" class="btn btn-primary" value="retirar valor" onclick="confirmar();"/></td><td><input type="reset" class="btn btn-primary" value="limpiar"/></td>
         
         </tr></form>
-        </table></center>
+        </table> </center>
+       
       </div>
-     
+      
+ 
+
              
       </div>
         <script src=../js/log_out.js></script>
-         
+        <script>
+        document.getElementById('ingresar').onsubmit = async function(e) {
+            e.preventDefault(); // Prevenir el envío normal del formulario
+            document.getElementById('spinner').style.display = 'block'; // Mostrar el spinner
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    body: formData,
+                });
+                const message = await response.text(); // Obtener el mensaje del PHP
+                console.log("Formulario enviado");
+                document.getElementById('mensaje').innerHTML = message; // Mostrar el mensaje
+                document.getElementById('miModal').style.display = 'block';
+                this.reset();
+            } catch (error) {
+               
+              document.getElementById('mensaje').innerHTML = message;
+              document.getElementById('miModal').style.display = 'block';
+            } finally {
+                document.getElementById('spinner').style.display = 'none'; // Ocultar el spinner
+            }
+        };
+        document.getElementById('cerrarModal').onclick = function() {
+            document.getElementById('miModal').style.display = 'none';
+        };
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('miModal')) {
+                document.getElementById('miModal').style.display = 'none';
+            }
+        };
+    </script>   
         
             
-              <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> 	
-       
+            
            
 </body>
 </html>

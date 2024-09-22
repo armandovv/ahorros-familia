@@ -1,0 +1,17 @@
+{
+    "name": "vendor/package",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Package\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "armandovv",
+            "email": "arvarela22@hotmail.com"
+        }
+    ],
+    "require": {
+        "tecnickcom/tcpdf": "^6.7"
+    }
+}

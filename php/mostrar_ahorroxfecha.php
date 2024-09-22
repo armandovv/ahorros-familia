@@ -1,13 +1,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-<nav class="navbar bg-body-tertiary ">
-  <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success me-2" type="button"  onclick="createPDF()">Descargar extracto</button>
-    <a href='../paginas/mostrar_estado.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER</button></a>
-    
-  </form>
-</nav>
+
 
 
 <?php
@@ -41,13 +35,43 @@ $monthN  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthN);
 $monthName = strftime('%B', $dateObj->getTimestamp());
 }}
-echo"<a href='dat.php?usuario=".$usuario."&concept=".serialize($concepto)."&ahorrado=".$capital.  "&retirado=".$retirado."&fecha=".$monthName."'> <button class='btn btn-sm btn-outline-secondary' type='button'>ver comportamiento financiero</button></a>";
 
+
+echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
+ echo' <div class="container-fluid">';
+  echo'  <a class="navbar-brand" href="../paginas/mostrar_estado.php">VOLVER</a>';
+    echo'<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">';
+     echo' <span class="navbar-toggler-icon"></span>';
+    echo'</button>';
+   echo' <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">';
+     echo' <ul class="navbar-nav">';
+       echo' <li class="nav-item dropdown">';
+         echo' <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">';
+           echo' DESCARGAR EXTRACTO DEL MES';
+         echo' </button>';
+         echo' <ul class="dropdown-menu dropdown-menu-ark">';
+           echo' <li><button class="dropdown-item"';
+          echo' onclick="createPDF();">';
+          echo'Como aparece en la pantalla';
+           echo'</button>';
+           echo'</li>';
+            echo'<li><a class="dropdown-item" href="extracto_m.php?usuario='.$usuario. '&fecha='.$fecha.'">';
+            echo'PDF';
+            echo'</a></li>';
+            
+         echo' </ul>';
+       echo' </li>';
+      echo'</ul>';
+    echo'</div>';
+  echo'</div>';
+echo'</nav>';
+echo'<br>';
+echo"<a href='dat.php?usuario=".$usuario."&concept=".serialize($concepto)."&ahorrado=".$capital.  "&retirado=".$retirado."&fecha=".$monthName."'> <button class='btn btn-sm btn-outline-secondary' type='button'>ver comportamiento financiero</button></a>";
 while ($mostrar=mysqli_fetch_array($result)){
 
   echo"<div class='doc' id='content'>";
 echo'<div class="bx1" align="center">';
-echo'<img src="../images/logo162645.png" width="300" height="160">';
+echo'<img src="../images/logo corp1.png">';
 echo'</div>';
 echo"<table>";
 echo'<h6>Apreciado Cliente</h6>';
