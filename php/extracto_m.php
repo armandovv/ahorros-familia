@@ -7,9 +7,7 @@ $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
 	
 	exit;
 }
-else
 
-{
 //echo "la coneccion fue exitosa";
 
 $usuario = $_GET['usuario'];
@@ -140,14 +138,18 @@ $tableHtml = '
         
 // Escribir el contenido en el PDF
 $pdf->writeHTML($fullHtml, true, false, true, false, '');
+$numeroDocumento = $_GET['usuario']; // Usa el número de documento como contraseña
+$pdf->SetProtection(array('copy', 'print'), $numeroDocumento, null);
 
 // Cerrar y generar el archivo PDF
 $pdf->Output('extracto'.$_GET['usuario'].date('Y-m-d-H:i:s').'.pdf', 'I'); // 'I' para enviar el archivo al navegador
 
 
     }
-}
+
+
 $mysqli->close();
+
 ?>
 
 

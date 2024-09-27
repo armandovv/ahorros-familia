@@ -63,7 +63,7 @@ $mensaje .="</div>";
 else{
   $mensaje = "<div style='text-align: center;'>";
   $mensaje .= "<h2>Error</h2>";
-  $mensaje .= "<p>Numero de documento no existe. Verifica que existan en la base de datos.</p>";
+  $mensaje .= "<p>Numero de documento no existe. Verifica que exista en la base de datos.</p>";
   $mensaje .= "</div>";
 }
 echo $mensaje;
