@@ -64,17 +64,19 @@ echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
       echo'</ul>';
     echo'</div>';
   echo'</div>';
+ 
 echo'</nav>';
 echo'<br>';
-echo"<a href='dat.php?usuario=".$usuario."&concept=".serialize($concepto)."&ahorrado=".$capital.  "&retirado=".$retirado."&fecha=".$monthName."'> <button class='btn btn-sm btn-outline-secondary' type='button'>ver comportamiento financiero</button></a>";
-while ($mostrar=mysqli_fetch_array($result)){
 
   echo"<div class='doc' id='content'>";
+ 
 echo'<div class="bx1" align="center">';
 echo'<img src="../images/logo corp1.png">';
 echo'</div>';
 echo"<table>";
-echo'<h6>Apreciado Cliente</h6>';
+$sql= "select distinct nombres, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
+$result=mysqli_query($mysqli, $sql);
+$mostrar=mysqli_fetch_array($result);
 echo"<tr><td><h6>",strtoupper($mostrar['nombres']),"</h6></td></tr>";
 echo"<tr><td><h6>" ,'Documento ',$mostrar['usuario']."</h6></td></tr>";
 echo"</table>"; } 
@@ -137,13 +139,20 @@ echo "</table>";
 else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES ' ,strtoupper($monthName).'")</script> ';
 	echo "<script>location.href='../paginas/mostrar_estado.php'</script>";
 }
-   }
+
 
 
 ?>
 </div>
-
+<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<form method="post" action="dat.php">
+<input type="hidden" name="usuario" value="<?php echo $usuario; ?>" />
+<input type="hidden" name="fecha" value="<?php echo $fecha; ?>" />
+<input type="hidden" name="capital" value="<?php echo $capital; ?>"/>
+<input type="hidden" name="retirado" value="<?php echo $retirado; ?>"/>
+<input type="submit" value="ver comportamiento financiero">
+</form>
 <script>
     function createPDF() {
       var element = document.getElementById('content');
@@ -152,15 +161,17 @@ var opt = {
   filename:     'extracto.pdf',
   image:        { type: 'jpeg', quality: 0.98 },
   html2canvas:  { scale: 2 },
-  jsPDF:        { unit: 'in', format: 'letter', orientation: 'Landscape' }
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'Landscape' },
+  download: false
 };
 
 // New Promise-based usage:
-html2pdf().set(opt).from(element).save();
+html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+                const pdfUrl = pdf.output('bloburl'); // Genera una URL de blob
+                          window.open(pdfUrl, '_blank');
+                        });
+                      }
 
-// Old monolithic-style usage:
-html2pdf(element, opt);
-    }
 </script>	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
 

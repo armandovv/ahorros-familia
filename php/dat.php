@@ -18,20 +18,30 @@
  
    echo "<script>location.href='../index.html'</script>";
  }
+$fecha = $_POST['fecha'];
+$usuario = $_POST['usuario'];
+$valor_a_ahorrar = $_POST['capital'];
+$valor_a_retirar = $_POST['retirado'];
+$sql="SELECT sum(valor_a_ahorrar) as ahorrado, sum(valor_a_retirar) as retirado  from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>=2024 and month(fecha)= '".$fecha."'";
+$result=mysqli_query($mysqli, $sql);
+if($result->num_rows > 0){
+while ($mostrar=mysqli_fetch_array($result)){
+$ingresos  =$mostrar['ahorrado'];
+$egresos = $mostrar['retirado'];
+setlocale(LC_ALL, 'spanish');
+$monthNum  = $_POST['fecha'];
+$dateObj   = DateTime::createFromFormat('!m', $monthNum);
+$monthName = strftime('%B', $dateObj->getTimestamp());
 
- 
- 
 
-$egresos =  $_GET["retirado"];
-$ingresos  = $_GET["ahorrado"];
-$fecha = $_GET['fecha'];
 
-$concepto=unserialize($_GET["concept"]);
 $transac =  [$ingresos];
 $transac1 = [$egresos];
-$etiquetas = [$fecha];
+$etiquetas = [$monthName];
 
 
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +55,10 @@ width: 800px !important;
 height: 700px;
 
 
+}
+.container .btn-primary{
+
+    border-radius: 30px;
 }
 
 
@@ -62,7 +76,7 @@ height: 700px;
 $_SESSION["nombreusuario"];?></h6>
 
     <div class="container">
-    <h6>Ingresos y gastos usuario <?php echo $_GET['usuario'];?></h6>
+    <h6>Ingresos y gastos usuario <?php echo $_POST['usuario'];?></h6>
     <canvas id="grafica"></canvas>
     <script type="text/javascript">
         // Obtener una referencia al elemento canvas del DOM
@@ -105,6 +119,9 @@ const gastado = {
             }
         });
     </script>
+   
+   
+    
    
    
      <a href='../paginas/mostrar_estado.php'> <button class="btn btn-sm btn-outline-secondary" type="button">VOLVER A ESTADOS DE CUENTA</button></a>

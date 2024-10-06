@@ -11,7 +11,7 @@ $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
 //echo "la coneccion fue exitosa";
 
 $usuario = $_GET['usuario'];
-$sql= "select distinct nombres, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
+$sql= "select distinct nombres, email, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 $mostrar=mysqli_fetch_array($result);
 
@@ -142,7 +142,7 @@ $numeroDocumento = $_GET['usuario']; // Usa el número de documento como contras
 $pdf->SetProtection(array('copy', 'print'), $numeroDocumento, null);
 
 // Cerrar y generar el archivo PDF
-$pdf->Output('extracto'.$_GET['usuario'].date('Y-m-d-H:i:s').'.pdf', 'I'); // 'I' para enviar el archivo al navegador
+$pdfout=$pdf->Output('extracto_'.date('Y-m-d-H:i:s').'.pdf', 'D'); // 'I' para enviar el archivo al navegador
 
 
     }
