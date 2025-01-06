@@ -22,7 +22,7 @@ $fecha = $_POST['fecha'];
 $usuario = $_POST['usuario'];
 $valor_a_ahorrar = $_POST['capital'];
 $valor_a_retirar = $_POST['retirado'];
-$sql="SELECT sum(valor_a_ahorrar) as ahorrado, sum(valor_a_retirar) as retirado  from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>=2024 and month(fecha)= '".$fecha."'";
+$sql="SELECT sum(valor_a_ahorrar) as ahorrado, sum(valor_a_retirar) as retirado  from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>=2025 and month(fecha)= '".$fecha."'";
 $result=mysqli_query($mysqli, $sql);
 if($result->num_rows > 0){
 while ($mostrar=mysqli_fetch_array($result)){

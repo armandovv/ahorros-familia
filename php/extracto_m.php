@@ -1,34 +1,46 @@
 <?php
 session_start();
-require_once('../vendor/tecnickcom/tcpdf/tcpdf.php'); // Ajusta el path según tu configuración
+
+require_once('../vendor\tecnickcom\tcpdf\include\tcpdf_static.php'); // Ajusta el path según tu configuración
+require_once('../vendor/tecnickcom/tcpdf/tcpdf.php');
 $mysqli = new mysqli('127.0.0.1','root', '', 'ahorros_familia');
   if ($mysqli->connect_errno) {
     echo'Error de conexión: ';
 	
 	exit;
+}else if
+(!empty($_SESSION['nombreusuario']))
+{ 
+ $sql= "select *from login where usuario= '".$_SESSION['nombreusuario']."'";
+
+$mysqli->query($sql);
+}else {
+  echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
+
+  echo "<script>location.href='../index.html'</script>";
 }
 
 //echo "la coneccion fue exitosa";
 
-$usuario = $_GET['usuario'];
+$usuario = $_POST['usuario'];
 $sql= "select distinct nombres, email, usuario from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
 $result=mysqli_query($mysqli, $sql);
 $mostrar=mysqli_fetch_array($result);
 
-$fecha = $_GET['fecha'];
+$fecha = $_POST['fecha'];
 "select concepto, sum(valor_a_ahorrar) as capital, sum(valor_a_retirar) as retirado from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>= 2024 and month(fecha)='".$fecha."'";
 setlocale(LC_ALL, 'spanish');
 $monthNum  = $fecha;
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
 $monthName = strftime('%B', $dateObj->getTimestamp());
-$sql1 = "SELECT sum(valor_a_retirar) from ahorros where usuario='".$usuario."' and year(fecha)>= 2024 and month(fecha)='".$fecha."'";
+$sql1 = "SELECT sum(valor_a_retirar) from ahorros where usuario='".$usuario."' and year(fecha)>= 2025 and month(fecha)='".$fecha."'";
 $sql2="SELECT  sum(valor_a_ahorrar)-sum(valor_a_retirar) as saldo from ahorros where usuario='".$usuario."'";
 $result1=mysqli_query($mysqli, $sql1);
 $result2=mysqli_query($mysqli, $sql2);
 
 $mostrar1=mysqli_fetch_array($result1);
 $mostrar2=mysqli_fetch_array($result2);
-$sql3 =  "select *from ahorros where year(fecha)>= 2024 and month(fecha)='".$fecha."' and usuario='".$usuario."'";
+$sql3 =  "select *from ahorros where year(fecha)>= 2025 and month(fecha)='".$fecha."' and usuario='".$usuario."'";
 $result3=mysqli_query($mysqli, $sql3); 
 
 // Crear una instancia de TCPDF
@@ -138,19 +150,55 @@ $tableHtml = '
         
 // Escribir el contenido en el PDF
 $pdf->writeHTML($fullHtml, true, false, true, false, '');
-$numeroDocumento = $_GET['usuario']; // Usa el número de documento como contraseña
+$numeroDocumento = $_POST['usuario']; // Usa el número de documento como contraseña
 $pdf->SetProtection(array('copy', 'print'), $numeroDocumento, null);
-
+$pdfDir = 'C:\xampp\htdocs\pdfs_banca';
 // Cerrar y generar el archivo PDF
-$pdfout=$pdf->Output('extracto_'.date('Y-m-d-H:i:s').'.pdf', 'D'); // 'I' para enviar el archivo al navegador
-
-
+$date = date('YmdHis');
+$pdfFile = $pdfDir."/extracto{$date}.pdf";
+$pdf->Output($pdfFile, 'F');
     }
-
 
 $mysqli->close();
 
+  $nombres = $mostrar['nombres'];
+     $paraemail = $mostrar['email'];
+     $subject = 'extracto financiero  ahorro familiar';
+       $msj ="Apreciado(a) $nombres: Adjunto encontrara el ultimo extracto para su consulta, asimismo puede descargarlo desde su portal transaccional";
+             $boundary = "----=_Part_" . md5(uniqid(time())); // Limite para la parte del cuerpo y el archivo adjunto
+
+// Cabeceras del correo
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "From: varelaarmando430@gmail.com\r\n";
+$headers .= "Reply-To:  varelaarmando430@gmail.com\r\n";
+$headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+
+// Cuerpo del correo
+$body = "--$boundary\r\n";
+$body .= "Content-Type: text/plain; charset=UTF-8\r\n";
+$body .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+$body .= "$msj\r\n\r\n";
+
+// Adjuntar el archivo PDF
+$file = file_get_contents($pdfFile); // Leer el contenido del archivo PDF
+$fileEncoded = chunk_split(base64_encode($file)); // Codificar el archivo en base64
+
+$body .= "--$boundary\r\n";
+$body .= "Content-Type: application/pdf; name=\'extracto_{$date}.pdf'\"\r\n"; // Tipo MIME del archivo
+$body .= "Content-Transfer-Encoding: base64\r\n";
+$body .= "Content-Disposition: attachment; filename=\ extracto_{$date}.pdf\"\r\n\r\n";
+$body .= "$fileEncoded\r\n\r\n";
+$body .= "--$boundary--"; // Finalizar el mensaje
+
+// Enviar el correo
+mail($paraemail,  $subject, $body, $headers);
+$mensaje = "<div style='text-align: center;'>";
+$mensaje .="<img src='../images/ezgif.com-animated-gif-maker.gif'  alt='...' style='max-width: 100%; height: 100px; margin-bottom: 2px;'>";
+$mensaje .="<h5>EXTRACTO ENVIADO</h5>";
+$mensaje .="<p> EMAIL $paraemail </p>";
+$mensaje .="</div>";
+echo $mensaje;
+        
+
+
 ?>
-
-
-

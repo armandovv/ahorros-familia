@@ -4,33 +4,19 @@ $dbuser="root";
 $dbpass="";
 $dbname="ahorros_familia";
 $conn= mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-if (!$conn)
-  {echo " LO SENTIMOS, ESTE SITIO WEB ESTA EXPERIMENTANDO PROBLEMAS  <BR>";
-	echo "error: Fallo al conectarse a mysql debido a : <br>";
-		echo"errno: " . $mysqli->connect_errno . "<br>";
-	exit;}
-
-$documento = $_POST['documento'];	
-
-
-$query =mysqli_query ($conn,"select distinct documento from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario=  '".$usuario."'");
- $nr= mysqli_num_rows($query);
-  if ($nr=0)
-  { echo '<script>alert("EL NUMERO DE DOCUMENTO INGRESADO NO SE ENCUENTRA REGISTRADO EN NUESTRA BASE DE DATOS")</script> ';
-		
-    echo "<script>location.href='./php/consulta_usuarios.php'</script>";
-
-}
-  else{
-    $query =mysqli_query($conn, "delete from usuarios where documento='".$documento."' ");
-    echo'<script>alert("se elimino usuario " '.$documento.'"del sistema ")</script>';
-
- 
-		
-  echo "<script>location.href='../php/consulta_usuarios.php'</script>";
-
-  
-  }
+if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); } 
+// ID del registro a eliminar 
+$documento = $_GET['documento']; 
+// Consulta para eliminar el registro 
+$sql = "DELETE FROM usuarios WHERE documento = ?"; 
+// Preparar la consulta
+ $stmt = $conn->prepare($sql); $stmt->bind_param("i", $documento); 
+ // Ejecutar la consulta 
+ if ($stmt->execute() === TRUE) { echo "Registro eliminado exitosamente"; }
+  else { echo "Error al eliminar el registro: " . $conn->error; } 
+  // Cerrar la conexión 
+  $stmt->close(); 
+  $conn->close();
  ?>
 
 

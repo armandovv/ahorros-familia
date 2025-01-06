@@ -15,8 +15,9 @@ else if
 (!empty($_SESSION['nombreusuario']))
 { 
  $sql= "select *from login where usuario= '".$_SESSION['nombreusuario']."'";
-
+ $sql2= "select *from usuarios";
 $mysqli->query($sql);
+$result=mysqli_query($mysqli, $sql2);
 }else {
   echo '<script>alert("CONTRASEÑA INCORRECTA")</script> ';
 
@@ -24,56 +25,74 @@ $mysqli->query($sql);
 }
 $mysqli->close();
 ?>
-<h4><?php echo
-      $_SESSION["nombreusuario"];?></h4>
-<CENTER><H2>USUARIOS REGISTRADOS</H2></center>
-<center><table border=1>
-<th width=300 bgcolor="blue">N. DOCUMENTO</th>
-<th width=300 bgcolor="blue">NOMBRE COMPLETO</th>
-<th width=300 bgcolor="blue">CORREO</th>
-<th width=300 bgcolor="blue">TELEFONO</th>
-<th width=30 style='border-width:0px'color:white></th>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Registros</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color:rgb(196, 167, 167);
+            cursor: pointer;
+        }
+        .edit-button, .delete-button {
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .edit-button {
+            background-color: #4CAF50;
+        }
+        .delete-button {
+            background-color: #f44336;
+        }
+    </style>
+ <script> function confirmarEliminacion(documento) {
+    if (confirm("¿Estás seguro de que deseas eliminar este registro?")) 
+    { window.location.href = "eliminar.php?documento=" + documento; } }
+ </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombres</th>
+                <th>Correo</th>
+                <th>telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se insertarán los registros desde PHP -->
+            <?php
+           if ($result->num_rows > 0) {  while($row = $result->fetch_assoc())
+             { echo "<tr>"; 
+               echo "<td>" . $row["documento"] . "</td>"; 
+               echo "<td>" .ucwords($row["nombres"]) . "</td>";
+               echo "<td>" . $row["email"] . "</td>";
+               echo "<td>" . $row["telefono"] . "</td>";
+               echo "<td><a class='delete-button'  href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'>Eliminar</a></td>";
+             } }
+                else { echo "<tr><td colspan='3'>No hay registros</td></tr>"; 
+                } 
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
 
-</table><center>
-  
-
-<?php
-error_reporting(0);
-
-$mysqli = new mysqli('127.0.0.1','root','','ahorros_familia');
-
-if ($mysqli->connect_errno) {
-	echo " LO SENTIMOS, ESTE SITIO WEB ESTA EXPERIMENTANDO PROBLEMAS  <BR>";
-echo "error: Fallo al conectarse a mysql debido a : <br>";
-    echo"errno: " . $mysqli->connect_errno . "<br>";
-exit;
-}
-else
-{
-//echo "la coneccion fue exitosa";
-
-
-$sql = "select *from usuarios";
-$result=mysqli_query($mysqli, $sql);  
-while ($mostrar=mysqli_fetch_array($result))
-{
-	
-echo "<table border=1>";  
- 
-    echo "<td width=300>",$mostrar['documento']."</td>";  
-    echo "<td width=300>",$mostrar['nombres']."</td>";  
-	echo "<td width=300>" ,$mostrar['email']."</td>";  
-	echo "<td width=300>",$mostrar['telefono']."</td>"; 
-  echo "<td width=30>".'<a href="../paginas/borrar.php"><img src="../images/eliminar.png" width="20" height="20">'.'</a>'."</td>";
-     
-}  
-echo "</table>"; 
-
-echo "<p>";
-    
-
-}
-
-
-?>
 <a href='../paginas/general.php'>VOLVER</a>
