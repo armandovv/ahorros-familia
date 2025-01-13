@@ -33,8 +33,10 @@ $mysqli->close();
     <title>Tabla de Registros</title>
     <style>
         table {
-            width: 100%;
+            width: 85%;
             border-collapse: collapse;
+            margin: 50px auto;
+            
         }
         th, td {
             padding: 12px;
@@ -42,7 +44,7 @@ $mysqli->close();
             border-bottom: 1px solid #ddd;
         }
         tr:hover {
-            background-color:rgb(196, 167, 167);
+            background-color:rgb(160, 158, 158);
             cursor: pointer;
         }
         .edit-button, .delete-button {
@@ -53,9 +55,7 @@ $mysqli->close();
             margin: 4px 2px;
             cursor: pointer;
         }
-        .edit-button {
-            background-color: #4CAF50;
-        }
+       
         .delete-button {
             background-color: #f44336;
         }
@@ -92,7 +92,7 @@ $mysqli->close();
             ?>
         </tbody>
     </table>
+    <a href='../paginas/general.php'>VOLVER</a>
 </body>
 </html>
 
-<a href='../paginas/general.php'>VOLVER</a>

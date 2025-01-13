@@ -64,6 +64,7 @@ echo'<nav class="navbar navbar-expand-lg navbar-dark bg-dark">';
             
          echo' </ul>';
        echo' </li>';
+       
       echo'</ul>';
     echo'</div>';
   echo'</div>';
@@ -166,16 +167,16 @@ else { echo' <script>alert("NO HAY MOVIMIENTOS PARA EL MES ' ,strtoupper($monthN
             border: 16px solid #f3f3f3;
             border-top: 16px solid #3498db;
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 250px;
+            height: 250px;
             animation: spin 2s linear infinite;
             background-color: rgba(0, 0, 0, 0.7);
         }
+        
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes spin{ 
+            0%{transform: translateX(-50%) rotate(0deg); } 
+            100% { transform: translateX(-50%) rotate(360deg); }}
         #miModal {
             display: none; /* Oculto por defecto */
             position: fixed; /* Fijo en la pantalla */
@@ -264,7 +265,8 @@ html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
                 console.log("Formulario enviado");
                 document.getElementById('mensaje').innerHTML = message; // Mostrar el mensaje
                 document.getElementById('miModal').style.display = 'block';
-                this.reset();
+                this.r
+                eset();
             } catch (error) {
                
               document.getElementById('mensaje').innerHTML = message;

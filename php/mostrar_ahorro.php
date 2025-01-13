@@ -14,6 +14,13 @@ exit;
 else
 {
 //echo "la coneccion fue exitosa";
+echo'<style type="text/css">';
+echo' tr:hover {
+            background-color:rgb(160, 158, 158);
+            cursor: pointer;
+        }';
+		echo'</style>';
+
 
 $usuario = $_POST['usuario'];
 $sql= "select distinct nombres from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."'";
