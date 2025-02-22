@@ -33,9 +33,9 @@ $mysqli->close();
     <title>Tabla de Registros</title>
     <style>
         table {
-            width: 85%;
+            width: 90%;
             border-collapse: collapse;
-            margin: 50px auto;
+            margin: 30px auto;
             
         }
         th, td {
@@ -44,10 +44,10 @@ $mysqli->close();
             border-bottom: 1px solid #ddd;
         }
         tr:hover {
-            background-color:rgb(160, 158, 158);
+            background-color:rgb(208, 191, 191);
             cursor: pointer;
         }
-        .edit-button, .delete-button {
+         .delete-button {
             color: white;
             border: none;
             padding: 5px 10px;
@@ -59,11 +59,24 @@ $mysqli->close();
         .delete-button {
             background-color: #f44336;
         }
+      .ref {
+           padding: 250px;
+        }
     </style>
  <script> function confirmarEliminacion(documento) {
     if (confirm("¿Estás seguro de que deseas eliminar este registro?")) 
     { window.location.href = "eliminar.php?documento=" + documento; } }
  </script>
+    <script> function copiarAlPortapapeles(documento) {
+        var aux = document.createElement("input");
+        aux.setAttribute("value", documento);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+        alert("Documento copiado al portapapeles: " + documento);
+    }
+    </script>
 </head>
 <body>
     <table>
@@ -86,13 +99,15 @@ $mysqli->close();
                echo "<td>" . $row["email"] . "</td>";
                echo "<td>" . $row["telefono"] . "</td>";
                echo "<td><a class='delete-button'  href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'>Eliminar</a></td>";
+               echo "<td><a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/archivos.png'></a></td>";
+               echo "</tr>";
              } }
                 else { echo "<tr><td colspan='3'>No hay registros</td></tr>"; 
                 } 
             ?>
         </tbody>
     </table>
-    <a href='../paginas/general.php'>VOLVER</a>
+    <a class='ref' href='../paginas/general.php'>VOLVER</a>
 </body>
 </html>
 

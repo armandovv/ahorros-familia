@@ -32,6 +32,7 @@ $mysqli->close();
 	<link rel= "stylesheet"  href="../css/userlog.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
  
+ 
   <script type="text/javascript" language="javascript">
   function confirmar(){
 			var num= document.getElementById('ret').value;
@@ -58,8 +59,8 @@ $mysqli->close();
             border: 16px solid #f3f3f3;
             border-top: 16px solid #3498db;
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 200px;
+            height: 200px;
             animation: spin 2s linear infinite;
             background-color: rgba(0, 0, 0, 0.7);
         }
@@ -245,9 +246,5 @@ $mysqli->close();
             }
         };
     </script>   
-        
-            
-            
-           
-</body>
+  </body>
 </html>
