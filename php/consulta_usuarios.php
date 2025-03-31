@@ -15,7 +15,28 @@ else if
 (!empty($_SESSION['nombreusuario']))
 { 
  $sql= "select *from login where usuario= '".$_SESSION['nombreusuario']."'";
- $sql2= "select *from usuarios";
+ $sql2= "SELECT 
+    usuarios.documento,
+    usuarios.nombres,
+    usuarios.email,
+    usuarios.telefono,
+    min(ahorros.fecha) as fecha_de_ingreso,
+    SUM(ahorros.valor_a_ahorrar) - SUM(ahorros.valor_a_retirar) AS total_ahorrado
+FROM 
+    usuarios
+INNER JOIN 
+    ahorros
+ON 
+    usuarios.documento = ahorros.usuario
+GROUP BY 
+    usuarios.documento, usuarios.nombres, usuarios.email, usuarios.telefono
+ORDER BY 
+    usuarios.documento;
+
+
+
+
+";
 $mysqli->query($sql);
 $result=mysqli_query($mysqli, $sql2);
 }else {
@@ -33,36 +54,37 @@ $mysqli->close();
     <title>Tabla de Registros</title>
     <style>
         table {
-            width: 90%;
+            width: 100%;
             border-collapse: collapse;
-            margin: 30px auto;
+
             
         }
         th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
+            border: 1px solid #ccc;
+            padding: 8px;
+            position: relative;
         }
+
         tr:hover {
             background-color:rgb(208, 191, 191);
             cursor: pointer;
         }
-         .delete-button {
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            text-decoration: none;
-            margin: 4px 2px;
-            cursor: pointer;
+        th {
+  background-color: #f2f2f2;
+  cursor: col-resize; /* Cambia el cursor cuando pasas sobre la cabecera */
+}
+.resizer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10px; /* Aumentamos el ancho para que sea más fácil de capturar */
+            height: 100%;
+            cursor: col-resize;
+            user-select: none;
+            z-index: 1; /* Asegura que el área esté por encima del contenido */
         }
-       
-        .delete-button {
-            background-color: #f44336;
-        }
-      .ref {
-           padding: 250px;
-        }
-    </style>
+
+ </style>
  <script> function confirmarEliminacion(documento) {
     if (confirm("¿Estás seguro de que deseas eliminar este registro?")) 
     { window.location.href = "eliminar.php?documento=" + documento; } }
@@ -77,16 +99,19 @@ $mysqli->close();
         alert("Documento copiado al portapapeles: " + documento);
     }
     </script>
+    
 </head>
 <body>
     <table>
         <thead>
             <tr>
-                <th>Documento</th>
-                <th>Nombres</th>
-                <th>Correo</th>
-                <th>telefono</th>
-                <th>Acciones</th>
+                <th>Documento<div class="resizer"></div></th>
+                <th>Nombres<div class="resizer"></div></th>
+                <th>Correo<div class="resizer"></div></th>
+                <th>telefono<div class="resizer"></div></th>
+                <th>Fecha de ingreso<div class="resizer"></div></th>
+                <th>Total ahorrado<div class="resizer"></div></th>
+                <th>Acciones<div class="resizer"></div></th>
             </tr>
         </thead>
         <tbody>
@@ -98,8 +123,10 @@ $mysqli->close();
                echo "<td>" .ucwords($row["nombres"]) . "</td>";
                echo "<td>" . $row["email"] . "</td>";
                echo "<td>" . $row["telefono"] . "</td>";
-               echo "<td><a class='delete-button'  href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'>Eliminar</a></td>";
-               echo "<td><a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/archivos.png'></a></td>";
+               echo "<td>" . $row["fecha_de_ingreso"] . "</td>";
+                echo "<td>" . number_format($row["total_ahorrado"]) . "</td>";
+               echo "<td><a href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'><img src='../images/delete.png'></a>";
+               echo "<a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/archivos.png'></a></td>";
                echo "</tr>";
              } }
                 else { echo "<tr><td colspan='3'>No hay registros</td></tr>"; 
@@ -108,6 +135,34 @@ $mysqli->close();
         </tbody>
     </table>
     <a class='ref' href='../paginas/general.php'>VOLVER</a>
+    <script>
+        const resizers = document.querySelectorAll(".resizer");
+        resizers.forEach(resizer => {
+            let startX, startWidth;
+
+            // Detecta el evento inicial al presionar el mouse
+            resizer.addEventListener("mousedown", (e) => {
+                startX = e.pageX;
+                startWidth = resizer.parentElement.offsetWidth;
+
+                // Agrega listeners para mover y detener el redimensionamiento
+                document.addEventListener("mousemove", resizeColumn);
+                document.addEventListener("mouseup", stopResize);
+            });
+            function resizeColumn(e) {
+                const newWidth = startWidth + (e.pageX - startX);
+                if (newWidth > 50) { // Límite mínimo para evitar columnas muy pequeñas
+                    resizer.parentElement.style.width = `${newWidth}px`;
+                }
+            }
+
+            function stopResize() {
+                document.removeEventListener("mousemove", resizeColumn);
+                document.removeEventListener("mouseup", stopResize);
+            }
+        });
+
+    </script>
 </body>
 </html>
 
