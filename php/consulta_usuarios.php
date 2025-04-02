@@ -29,9 +29,8 @@ INNER JOIN
 ON 
     usuarios.documento = ahorros.usuario
 GROUP BY 
-    usuarios.documento, usuarios.nombres, usuarios.email, usuarios.telefono
-ORDER BY 
-    usuarios.documento;
+    usuarios.documento, usuarios.nombres, usuarios.email, usuarios.telefono;
+
 
 
 
@@ -72,6 +71,10 @@ $mysqli->close();
         th {
   background-color: #f2f2f2;
   cursor: col-resize; /* Cambia el cursor cuando pasas sobre la cabecera */
+    text-align:center;
+}
+th #sortButton{
+    border: none;
 }
 .resizer {
             position: absolute;
@@ -82,6 +85,7 @@ $mysqli->close();
             cursor: col-resize;
             user-select: none;
             z-index: 1; /* Asegura que el área esté por encima del contenido */
+            resize: both;
         }
 
  </style>
@@ -99,7 +103,8 @@ $mysqli->close();
         alert("Documento copiado al portapapeles: " + documento);
     }
     </script>
-    
+    <script src="../js/script.js" defer></script>
+
 </head>
 <body>
     <table>
@@ -110,11 +115,12 @@ $mysqli->close();
                 <th>Correo<div class="resizer"></div></th>
                 <th>telefono<div class="resizer"></div></th>
                 <th>Fecha de ingreso<div class="resizer"></div></th>
-                <th>Total ahorrado<div class="resizer"></div></th>
-                <th>Acciones<div class="resizer"></div></th>
+                <th>Total ahorrado <button id="sortButton" onclick="sortTable()">⇅</button>
+                <div class="resizer"></div></th>
+                <th colspan="2">Acciones<div class="resizer"></div></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tableBody">
             <!-- Aquí se insertarán los registros desde PHP -->
             <?php
            if ($result->num_rows > 0) {  while($row = $result->fetch_assoc())
@@ -124,9 +130,10 @@ $mysqli->close();
                echo "<td>" . $row["email"] . "</td>";
                echo "<td>" . $row["telefono"] . "</td>";
                echo "<td>" . $row["fecha_de_ingreso"] . "</td>";
-                echo "<td>" . number_format($row["total_ahorrado"]) . "</td>";
-               echo "<td><a href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'><img src='../images/delete.png'></a>";
-               echo "<a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/archivos.png'></a></td>";
+                echo "<td>".'$'. number_format($row["total_ahorrado"]) . "</td>";
+               echo "<td><a href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'><img src='../images/trash-can_115312.png'></a></td>";
+               
+               echo "<td><a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/copy-content_icon-icons.com_72793.png'></a></td>";
                echo "</tr>";
              } }
                 else { echo "<tr><td colspan='3'>No hay registros</td></tr>"; 
@@ -151,7 +158,7 @@ $mysqli->close();
             });
             function resizeColumn(e) {
                 const newWidth = startWidth + (e.pageX - startX);
-                if (newWidth > 50) { // Límite mínimo para evitar columnas muy pequeñas
+                if (newWidth > 1) { // Límite mínimo para evitar columnas muy pequeñas
                     resizer.parentElement.style.width = `${newWidth}px`;
                 }
             }
