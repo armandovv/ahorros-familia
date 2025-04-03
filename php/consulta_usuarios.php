@@ -104,10 +104,21 @@ th #sortButton{
     }
     </script>
     <script src="../js/script.js" defer></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <table>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" id="buscador" placeholder="Buscar" aria-label="Search">
+     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg>
+    </form>
+  </div>
+</nav>
+
+    <table id="tablaDatos">
         <thead>
             <tr>
                 <th>Documento<div class="resizer"></div></th>
@@ -170,6 +181,8 @@ th #sortButton{
         });
 
     </script>
+     <script src="../js/busqueda.js"></script>
+
 </body>
 </html>
 
