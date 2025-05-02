@@ -10,9 +10,9 @@ if (!$conn)
 		echo"errno: " . $mysqli->connect_errno . "<br>";
 	exit;}
 
-$usuario = $_POST['usuario'];	
+$documento = $_POST['usuario'];	
 
-$queryuser =mysqli_query ($conn,"select distinct documento from usuarios inner join ahorros on usuarios.documento = ahorros.usuario where usuario= '".$usuario."'");
+$queryuser =mysqli_query ($conn,"select *from usuarios where documento= '".$documento."'");
 	$nr= mysqli_num_rows($queryuser);
   if ($nr>0)
   {

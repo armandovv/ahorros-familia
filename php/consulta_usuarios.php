@@ -24,13 +24,12 @@ else if
     SUM(ahorros.valor_a_ahorrar) - SUM(ahorros.valor_a_retirar) AS total_ahorrado
 FROM 
     usuarios
-INNER JOIN 
+left JOIN 
     ahorros
 ON 
     usuarios.documento = ahorros.usuario
 GROUP BY 
     usuarios.documento, usuarios.nombres, usuarios.email, usuarios.telefono;
-
 
 
 
@@ -65,7 +64,7 @@ $mysqli->close();
         }
 
         tr:hover {
-            background-color:rgb(208, 191, 191);
+            background-color:rgb(195, 226, 248);
             cursor: pointer;
         }
         th {
@@ -73,6 +72,8 @@ $mysqli->close();
   cursor: col-resize; /* Cambia el cursor cuando pasas sobre la cabecera */
     text-align:center;
 }
+
+
 th #sortButton{
     border: none;
 }
@@ -115,8 +116,15 @@ th #sortButton{
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
 </svg>
     </form>
+    <div>
+  
+  <a href="../paginas/create_user.php" title="nuevo usuario"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16" >
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+  <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+</svg></a>
   </div>
-</nav>
+  </div>
+ </nav>
 
     <table id="tablaDatos">
         <thead>
@@ -136,7 +144,7 @@ th #sortButton{
             <?php
            if ($result->num_rows > 0) {  while($row = $result->fetch_assoc())
              { echo "<tr>"; 
-               echo "<td>" . $row["documento"] . "</td>"; 
+               echo "<td scope='row'>" . $row["documento"] . "</td>"; 
                echo "<td>" .ucwords($row["nombres"]) . "</td>";
                echo "<td>" . $row["email"] . "</td>";
                echo "<td>" . $row["telefono"] . "</td>";
@@ -144,7 +152,7 @@ th #sortButton{
                 echo "<td>".'$'. number_format($row["total_ahorrado"]) . "</td>";
                echo "<td><a href='javascript:void(0)' onclick='confirmarEliminacion(" . $row["documento"] . ")'><img src='../images/trash-can_115312.png'></a></td>";
                
-               echo "<td><a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/copy-content_icon-icons.com_72793.png'></a></td>";
+               echo "<td><a href='javascript:void(0)' onclick='copiarAlPortapapeles(" . $row["documento"] . ")'><img src='../images/copy-content_icon-icons.com_72793.png' title='copiar documento'></a></td>";
                echo "</tr>";
              } }
                 else { echo "<tr><td colspan='3'>No hay registros</td></tr>"; 

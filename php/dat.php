@@ -22,12 +22,19 @@ $fecha = $_POST['fecha'];
 $usuario = $_POST['usuario'];
 $valor_a_ahorrar = $_POST['capital'];
 $valor_a_retirar = $_POST['retirado'];
-$sql="SELECT sum(valor_a_ahorrar) as ahorrado, sum(valor_a_retirar) as retirado  from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>=2025 and month(fecha)= '".$fecha."'";
-$result=mysqli_query($mysqli, $sql);
-if($result->num_rows > 0){
-while ($mostrar=mysqli_fetch_array($result)){
-$ingresos  =$mostrar['ahorrado'];
-$egresos = $mostrar['retirado'];
+$sql="SELECT fecha, valor_a_ahorrar as ahorrado, valor_a_retirar as retirado, concepto  from ahorros inner join usuarios on usuarios.documento= ahorros.usuario where ahorros.usuario= '".$usuario."' and year(fecha)>=2025 and month(fecha)= '".$fecha."'";
+$result=$mysqli->query($sql);
+
+    $fecha=[];
+    $ingresos =[];
+    $egresos =[];
+    
+while ($mostrar= $result->fetch_assoc()){
+    $fecha[] = $mostrar['fecha'];
+    $concepto[] = $mostrar['concepto'];
+$ingresos[]  =$mostrar['ahorrado'];
+$egresos[] = $mostrar['retirado'];
+
 setlocale(LC_ALL, 'spanish');
 $monthNum  = $_POST['fecha'];
 $dateObj   = DateTime::createFromFormat('!m', $monthNum);
@@ -35,13 +42,11 @@ $monthName = strftime('%B', $dateObj->getTimestamp());
 
 
 
-$transac =  [$ingresos];
-$transac1 = [$egresos];
-$etiquetas = [$monthName];
+
 
 
 }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,19 +87,19 @@ $_SESSION["nombreusuario"];?></h6>
         // Obtener una referencia al elemento canvas del DOM
         const $grafica = document.querySelector("#grafica");
         // Pasaamos las etiquetas desde PHP
-        const etiquetas = <?php echo json_encode($etiquetas) ?>;
+        const etiquetas = <?php echo json_encode($concepto) ?>;
         // Podemos tener varios conjuntos de datos. Comencemos con uno
         const ahorrado = {
     label: "ahorros",
-    data: <?php echo json_encode($transac) ?>, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: 'rgba(82, 210, 128, 0.6)', // Color de fondo
+    data: <?php echo json_encode($ingresos) ?>, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+    backgroundColor: 'rgba(18, 248, 22, 0.97)', // Color de fondo
     borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
     borderWidth: 1,// Ancho del borde
 };
 const gastado = {
     label: "retiros",
-    data: <?php echo json_encode($transac1) ?>, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
-    backgroundColor: 'rgba(255, 159, 64, 0.2)',// Color de fondo
+    data: <?php echo json_encode($egresos) ?>, // La data es un arreglo que debe tener la misma cantidad de valores que la cantidad de etiquetas
+    backgroundColor: 'rgba(231, 13, 24, 0.92)',// Color de fondo
     borderColor: 'rgba(255, 159, 64, 1)',// Color del borde
     borderWidth: 1,// Anc
 };
@@ -105,6 +110,7 @@ const gastado = {
                 datasets: [
                           ahorrado,
                           gastado,
+                          
                     // Aquí más datos...
                 ]
             },
